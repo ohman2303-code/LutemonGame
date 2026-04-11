@@ -20,43 +20,43 @@
         android:layout_height="wrap_content" >
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/BlackButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Musta" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/GreenButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Vihreä" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/WhiteButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Valkoinen" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/TurqoiseButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Turkoosi" />
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/OrangeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Musta" />
     </RadioGroup>
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/LutemonNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Lutemonin nimi"
         android:inputType="text"
-        android:text="Name"
         tools:layout_editor_absoluteX="78dp"
         tools:layout_editor_absoluteY="284dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
