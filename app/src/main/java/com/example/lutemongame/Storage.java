@@ -1,4 +1,4 @@
 package com.example.lutemongame;
 
-public class Cage {
+public class Storage {
 }
