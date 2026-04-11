@@ -8,14 +8,22 @@
     tools:context=".AddLutemonActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/AddLutemonButton"
         android:layout_width="152dp"
         android:layout_height="51dp"
         android:layout_marginTop="24dp"
-        android:text="Button"
+        android:backgroundTint="#E91E63"
+        android:shadowColor="#3F51B5"
+        android:text="Lisää Lutemon"
+        android:textColorHighlight="#E91E63"
+        android:textColorHint="#E91E63"
+        android:textColorLink="#673AB7"
+        app:iconTint="#E91E63"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LutemonNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/LutemonNameText"
+        app:rippleColor="#2196F3"
+        app:strokeColor="#E91E63" />
 
     <RadioGroup
         android:id="@+id/LutemonRadioGroup"
