@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button GoToAddLutemon = findViewById(R.id.GoToAddLutemon);
         Button GoToListLutemons = findViewById(R.id.GoToListLutemons);
-        Button GoToFight = findViewById(R.id.GoToFight);
         Button GoToMoveLutemon = findViewById(R.id.GoToMoveLutemon);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
