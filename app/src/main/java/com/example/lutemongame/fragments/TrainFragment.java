@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.lutemongame.Lutemon;
+import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
 
 import java.util.HashMap;
@@ -78,6 +79,7 @@ public class TrainFragment extends Fragment {
 
         if (rgId == R.id.rbHome){
             //Here we move lutemons to home
+            MainActivity.home.moveLutemon(lutemon, MainActivity.Home);
         } else if (rgId == R.id.rbTrainingArea){
             //Here we move lutemons to training area
         } else if (rgId == R.id.rbBattleField){
