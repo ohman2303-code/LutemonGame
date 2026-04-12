@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LutemonGame">
         <activity
+            android:name=".MoveLutemonsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FragmentsActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddLutemonActivity"
             android:exported="false" />
         <activity
