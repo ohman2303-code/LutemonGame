@@ -1,5 +1,7 @@
 package com.example.lutemongame;
 
+import java.util.HashMap;
+
 public abstract class Storage {
     protected HashMap<Integer, Lutemon> lutemons = new HashMap<>();
 
