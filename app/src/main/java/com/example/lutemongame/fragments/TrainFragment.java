@@ -66,18 +66,42 @@ public class TrainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_train, container, false);
+
+        makeRadioButtons();
+
+        //RadioGroup for choosing where to move lutemons
+        RadioGroup rgChooseLutemons = rgChooseLutemons.findViewById(R.id.rgChooseLutemons);
+        RadioButton rbHome;
+        RadioButton rbTrainingArea;
+        RadioButton rbBattleField;
+        int rgId = rgChooseLutemons.getCheckedRadioButtonId();
+
+        if (rgId == R.id.rbHome){
+            //Here we move lutemons to home
+        } else if (rgId == R.id.rbTrainingArea){
+            //Here we move lutemons to training area
+        } else if (rgId == R.id.rbBattleField){
+            //Here we move lutemons to battle field
+        }
         return view;
     }
     public void makeRadioButtons(){
+        // Radiogroups from fragments
         RadioGroup rgTrainLutemons = rgTrainLutemons.findViewById(R.id.rgTrainLutemons);
+        RadioGroup rgChooseLutemons = rgChooseLutemons.findViewById(R.id.rgChooseLutemons);
+        //Lutemonlist from TrainingArea
         HashMap<Integer, String> lutemons = trainingArea.getLutemons();
-        RadioButton rb;
+        // Creating radiobuttons for chosen lutemons to be moved
+        RadioButton rbChooseLutemon;
         int i = 0;
         for (Lutemon lutemon : lutemons.values(){
-            rb = new RadioButton(this);
-            rb.setText(lutemon.getName());
-            rb.setId(i++);
-            rgTrainLutemons.addView(rb);
+            rbChooseLutemon = new RadioButton(this);
+            rbChooseLutemon.setText(lutemon.getName());
+            rbChooseLutemon.setId(i++);
+            rgTrainLutemons.addView(rbChooseLutemon);
         }
+
+
+
     }
 }
