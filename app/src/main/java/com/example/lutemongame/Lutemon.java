@@ -96,6 +96,4 @@ public abstract class Lutemon {
         this.image = image;
     }
 
-    }
-
 }
