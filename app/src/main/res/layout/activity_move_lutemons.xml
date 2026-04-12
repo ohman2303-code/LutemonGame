@@ -42,13 +42,15 @@
         android:id="@+id/ReturnToMainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="52dp"
+        android:onClick="switchToMain"
         android:text="Takaisin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="412dp"
         android:layout_height="573dp"
         app:layout_constraintBottom_toTopOf="@+id/ReturnToMainButton"
