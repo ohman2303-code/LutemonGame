@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         TrainingArea trainingArea = new TrainingArea();
         BattleField battleField = new BattleField();
     }
-
     public void switchToAddLutemonActivity(View view){
         Intent intent = new Intent(this, AddLutemonActivity.class);
         startActivity(intent);

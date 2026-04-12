@@ -7,4 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".ListNotesActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListNotesRV"
+        android:layout_width="135dp"
+        android:layout_height="549dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/returnButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:onClick="returnBack"
+        android:text="Palaa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
