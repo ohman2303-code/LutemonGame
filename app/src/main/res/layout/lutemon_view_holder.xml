@@ -10,7 +10,7 @@
         android:id="@+id/NoteIdText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FF9800"
+        android:background="#FBE2DFDA"
         android:text="TextView"
         android:textSize="20sp" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/NoteTimeAndDateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FF9800"
+        android:background="#EBE8E4"
         android:text="TextView"
         android:textSize="20sp" />
 
@@ -26,7 +26,7 @@
         android:id="@+id/NoteTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FF9800"
+        android:background="#E7E3DD"
         android:text="TextView"
         android:textSize="20sp" />
 
@@ -34,7 +34,7 @@
         android:id="@+id/NoteContentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FF9800"
+        android:background="#E2DCD4"
         android:text="TextView"
         android:textSize="20sp" />
 </androidx.appcompat.widget.LinearLayoutCompat>

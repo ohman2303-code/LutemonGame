@@ -8,7 +8,7 @@
     tools:context=".ListLutemonsActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ListNotesRV"
+        android:id="@+id/ListLutemonsRV"
         android:layout_width="135dp"
         android:layout_height="549dp"
         android:layout_marginStart="24dp"
