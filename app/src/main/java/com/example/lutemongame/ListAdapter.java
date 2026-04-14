@@ -1,19 +1,27 @@
 package com.example.lutemongame;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class ListAdapter {
-    TextView NoteIdText, NoteTimeAndDateText, NoteTitleText, NoteContentText;
+public class ListAdapter extends RecyclerView.Adapter<LutemonsViewHolder>{
 
+    @NonNull
+    @Override
+    public LutemonsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
+    }
 
-    public NoteViewHolder(@NonNull View itemView) {
-        super(itemView);
-        NoteIdText = itemView.findViewById(R.id.NoteIdText);
-        NoteTimeAndDateText = itemView.findViewById(R.id.NoteTimeAndDateText);
-        NoteTitleText = itemView.findViewById(R.id.NoteTitleText);
-        NoteContentText = itemView.findViewById(R.id.NoteContentText);
+    @Override
+    public void onBindViewHolder(@NonNull LutemonsViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
     }
 }

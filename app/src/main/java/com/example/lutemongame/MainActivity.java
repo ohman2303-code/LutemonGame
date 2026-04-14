@@ -12,7 +12,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static Home home = new Home();
+    public static TrainingArea trainingArea = new TrainingArea();
+    public static BattleField battleField = new BattleField();
 
 
     @Override
@@ -29,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Home home = new Home();
-        TrainingArea trainingArea = new TrainingArea();
-        BattleField battleField = new BattleField();
     }
     public void switchToAddLutemonActivity(View view){
         Intent intent = new Intent(this, AddLutemonActivity.class);
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchToListLutemonsActivity(View view){
-        Intent intent = new Intent(this, ListNotesActivity.class);
+        Intent intent = new Intent(this, ListLutemonsActivity.class);
         startActivity(intent);
     }
 

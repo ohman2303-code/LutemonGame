@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LutemonGame">
         <activity
-            android:name=".ListNotesActivity"
+            android:name=".ListLutemonsActivity"
             android:exported="false" />
         <activity
             android:name=".MoveLutemonsActivity"

@@ -1,5 +1,7 @@
 package com.example.lutemongame.fragments;
 
+import static com.example.lutemongame.MainActivity.trainingArea;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -68,42 +71,78 @@ public class TrainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_train, container, false);
 
-        makeRadioButtons(view);
+        RadioGroup rgTrainLutemons = makeRadioButtons(view);
 
         //RadioGroup for choosing where to move lutemons
         RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemons);
-        RadioButton rbHome;
-        RadioButton rbTrainingArea;
-        RadioButton rbBattleField;
-        int rgId = rgChooseLutemons.getCheckedRadioButtonId();
+        RadioButton rbHome = view.findViewById(R.id.rbHome);
+        RadioButton rbBattleField = view.findViewById(R.id.rbBattleField);
 
-        if (rgId == R.id.rbHome){
-            //Here we move lutemons to home
-            //MainActivity.home.moveLutemon(lutemon, MainActivity.Home);
-        } else if (rgId == R.id.rbTrainingArea){
-            //Here we move lutemons to training area
-        } else if (rgId == R.id.rbBattleField){
-            //Here we move lutemons to battle field
-        }
+
+        //Here we move Lutemons to Home or BattleField (They are currently in TrainingArea)
+        Button moveLutemonsButton = view.findViewById(R.id.MoveLutemonsButton);
+        moveLutemonsButton.setOnClickListener(view1 -> {
+            int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
+            int rgId = rgChooseLutemons.getCheckedRadioButtonId();
+            if (selectedLutemonId != -1){
+                Lutemon chosenLutemon = MainActivity.trainingArea.getLutemon(selectedLutemonId);
+
+                if (rgId == R.id.rbHome){
+                    //Here we move lutemons to home
+                    trainingArea.moveLutemon(chosenLutemon, MainActivity.home);
+
+                } else if (rgId == R.id.rbBattleField){
+                    //Here we move lutemons to battleField
+                    trainingArea.moveLutemon(chosenLutemon, MainActivity.battleField);
+                }
+            }
+
+        });
+
+
+
+        //Button for leveling up chosen Lutemon. 25 presses to level up once and max 10 levels (for now)
+        Button trainLutemonButton = view.findViewById(R.id.TrainLutemonButton);
+        trainLutemonButton.setOnClickListener(new View.OnClickListener() {
+            int clickCounter = 0;
+            int timesLevelledUp = 0;
+            @Override
+            public void onClick(View view) {
+                clickCounter = clickCounter + 1;
+                if (clickCounter == 25 && timesLevelledUp <= 10){
+                    //Here we level up Lutemon using TrainingArea
+                    int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
+                    Lutemon chosenLutemon = MainActivity.trainingArea.getLutemon(selectedLutemonId);
+                    trainingArea.train(chosenLutemon);
+
+                    //After we set the clickCounter back to 0 and increase the timesLevelledUp by 1
+                    clickCounter = 0;
+                    timesLevelledUp += 1;
+                }
+
+
+            }
+        });
+
         return view;
     }
 
-    public void makeRadioButtons(View view){
-        // Radiogroups from fragments
+    public RadioGroup makeRadioButtons(View view) {
         RadioGroup rgTrainLutemons = view.findViewById(R.id.rgTrainLutemons);
-        RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemons);
-        //Lutemonlist from TrainingArea
-        //HashMap<Integer, String> lutemons = trainingArea.getLutemons();
-        // Creating radiobuttons for chosen lutemons to be moved
-        RadioButton rbChooseLutemon;
-        int i = 0;
-        /* for (Lutemon lutemon : lutemons.values()){
-            rbChooseLutemon = new RadioButton(getContext());
-            rbChooseLutemon.setText(lutemon.getName());
-            rbChooseLutemon.setId(i++);
-            if (rgTrainLutemons != null) {
-                rgTrainLutemons.addView(rbChooseLutemon);
-            }
-        }*/
+        if (rgTrainLutemons == null) return null;
+
+        rgTrainLutemons.removeAllViews(); // Clear the old ones if there is any
+
+        // Check what Lutemons are in TrainingArea
+        for (Lutemon lutemon : MainActivity.trainingArea.getLutemons().values()) {
+            RadioButton rb = new RadioButton(getContext());
+            rb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
+
+            // Set the radiobutton id to Lutemons own id
+            rb.setId(lutemon.getId());
+
+            rgTrainLutemons.addView(rb);
+        }
+        return rgTrainLutemons;
     }
 }

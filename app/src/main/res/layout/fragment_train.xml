@@ -25,16 +25,26 @@
             android:text="Kotiin" />
 
         <RadioButton
-            android:id="@+id/rbTrainingArea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Treeniin" />
-
-        <RadioButton
             android:id="@+id/rbBattleField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Taisteluun" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/TrainLutemonButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Treenaa valittua Lutemonia!"
+        android:translationX="150dp"
+        android:translationY="350dp" />
+
+    <Button
+        android:id="@+id/MoveLutemonsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Siirrä valitut Lutemonit!"
+        android:translationX="150dp"
+        android:translationY="450dp" />
 
 </FrameLayout>
