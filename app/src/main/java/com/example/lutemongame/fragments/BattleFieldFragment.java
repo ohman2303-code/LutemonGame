@@ -7,7 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
+import com.example.lutemongame.BattleField;
+import com.example.lutemongame.Lutemon;
+import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
 
 /**
@@ -60,7 +65,30 @@ public class BattleFieldFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_battlefield, container, false);
+        View view = inflater.inflate(R.layout.fragment_battlefield, container, false);
+
+
+        RadioGroup rgBattleFieldLutemons = makeRadioButtons(view);
+        BattleField battleField = BattleField.getInstance();
+        return view;
+    }
+    public RadioGroup makeRadioButtons(View view) {
+        RadioGroup rgBattleFieldLutemons = view.findViewById(R.id.rgBattleFieldLutemons);
+        BattleField battleField= BattleField.getInstance();
+        if (rgBattleFieldLutemons == null) return null;
+
+        rgBattleFieldLutemons.removeAllViews(); // Clear the old ones if there is any
+
+        // Check what Lutemons are in BattleField
+        for (Lutemon lutemon : MainActivity.battleField.getLutemons().values()) { //Muokkaa tämä kaikista fragmenteista singletonista
+            RadioButton rb = new RadioButton(getContext());
+            rb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
+
+            // Set the radiobutton id to Lutemons own id
+            rb.setId(lutemon.getId());
+
+            rgBattleFieldLutemons.addView(rb);
+        }
+        return rgBattleFieldLutemons;
     }
 }
