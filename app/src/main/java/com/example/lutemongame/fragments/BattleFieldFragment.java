@@ -80,7 +80,7 @@ public class BattleFieldFragment extends Fragment {
         rgBattleFieldLutemons.removeAllViews(); // Clear the old ones if there is any
 
         // Check what Lutemons are in BattleField
-        for (Lutemon lutemon : MainActivity.battleField.getLutemons().values()) { //Muokkaa tämä kaikista fragmenteista singletonista
+        for (Lutemon lutemon : battleField.getLutemons().values()) {
             RadioButton rb = new RadioButton(getContext());
             rb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
 

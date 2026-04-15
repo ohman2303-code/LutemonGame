@@ -1,7 +1,5 @@
 package com.example.lutemongame.fragments;
 
-import static com.example.lutemongame.MainActivity.home;
-import static com.example.lutemongame.MainActivity.trainingArea;
 
 import android.os.Bundle;
 
@@ -14,6 +12,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.lutemongame.Home;
 import com.example.lutemongame.Lutemon;
 import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
@@ -71,6 +70,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         RadioGroup rgHomeLutemons = makeRadioButtons(view);
+        Home home = Home.getInstance();
+
 
         //RadioGroup for choosing where to move lutemons
         RadioGroup rgChooseLutemonsFromHome = view.findViewById(R.id.rgChooseLutemonsFromHome);
@@ -88,7 +89,7 @@ public class HomeFragment extends Fragment {
 
                 if (rgId == R.id.rbTrainingAreaFromHome){
                     //Here we move lutemons to trainingarea
-                    home.moveLutemon(chosenLutemon, trainingArea);
+                    home.moveLutemon(chosenLutemon, MainActivity.trainingArea);
 
                 } else if (rgId == R.id.rbBattleFieldFromHome){
                     //Here we move lutemons to battleField
@@ -101,6 +102,7 @@ public class HomeFragment extends Fragment {
     }
     public RadioGroup makeRadioButtons(View view) {
         RadioGroup rgHomeLutemons = view.findViewById(R.id.rgHomeLutemons);
+        Home home = Home.getInstance();
         if (rgHomeLutemons == null) return null;
 
         rgHomeLutemons.removeAllViews(); // Clear the old ones if there is any
