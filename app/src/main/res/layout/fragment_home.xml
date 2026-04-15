@@ -5,10 +5,35 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <RadioGroup
+        android:id="@+id/rgHomeLutemons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
+    <RadioGroup
+        android:id="@+id/rgChooseLutemonsFromHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationY="150dp">
+
+        <RadioButton
+            android:id="@+id/rbTrainingAreaFromHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Treeniin" />
+
+        <RadioButton
+            android:id="@+id/rbBattleFieldFromHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Taisteluun" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnMoveLutemonsFromHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Siirrä valitut Lutemonit"
+        android:translationX="150dp"
+        android:translationY="450dp" />
 </FrameLayout>
