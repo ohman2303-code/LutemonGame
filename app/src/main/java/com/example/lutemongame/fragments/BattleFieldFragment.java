@@ -89,7 +89,7 @@ public class BattleFieldFragment extends Fragment {
             if (selectedLutemonId != -1){
                 Lutemon chosenLutemon = battleField.getLutemon(selectedLutemonId);
 
-                if (rgId == R.id.rbHomeFromBattleField{
+                if (rgId == R.id.rbHomeFromBattleField){
                     //Here we move lutemons to home
                     battleField.moveLutemon(chosenLutemon, Home.getInstance());
 
