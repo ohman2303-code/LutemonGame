@@ -5,5 +5,6 @@ public class Turquoise extends Lutemon{
         super(name, color, attackPower, defensePower, experience, health, maxHealth, id, image);
         this.attackPower = 7;
         this.defensePower = 2;
+        image = R.drawable.lutemon_turqoise;
     }
 }

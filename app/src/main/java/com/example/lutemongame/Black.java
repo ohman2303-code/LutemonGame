@@ -5,5 +5,6 @@ public class Black extends Lutemon{
         super(name, color, attackPower, defensePower, experience, health, maxHealth, id, image);
         this.attackPower = 9;
         this.defensePower = 0;
+        image = R.drawable.lutemon_black;
     }
 }
