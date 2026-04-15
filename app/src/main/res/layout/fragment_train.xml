@@ -8,24 +8,24 @@
     <!-- TODO: Update blank fragment layout -->
 
     <RadioGroup
-        android:id="@+id/rgTrainLutemons"
+        android:id="@+id/rgHomeLutemons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <RadioGroup
-        android:id="@+id/rgChooseLutemons"
+        android:id="@+id/rgChooseLutemonsFromTrainingArea"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:translationY="150dp" >
 
         <RadioButton
-            android:id="@+id/rbHome"
+            android:id="@+id/rbHomeFromTrainingArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Kotiin" />
 
         <RadioButton
-            android:id="@+id/rbBattleField"
+            android:id="@+id/rbBattleFieldFromTrainingArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Taisteluun" />
@@ -40,7 +40,7 @@
         android:translationY="350dp" />
 
     <Button
-        android:id="@+id/MoveLutemonsButton"
+        android:id="@+id/btnMoveLutemonsFromTrainingArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Siirrä valitut Lutemonit!"

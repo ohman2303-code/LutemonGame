@@ -17,8 +17,6 @@ import com.example.lutemongame.Lutemon;
 import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
 
-import java.util.HashMap;
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link TrainFragment#newInstance} factory method to
@@ -74,24 +72,24 @@ public class TrainFragment extends Fragment {
         RadioGroup rgTrainLutemons = makeRadioButtons(view);
 
         //RadioGroup for choosing where to move lutemons
-        RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemons);
-        RadioButton rbHome = view.findViewById(R.id.rbHome);
-        RadioButton rbBattleField = view.findViewById(R.id.rbBattleField);
+        RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemonsFromTrainingArea);
+        RadioButton rbHome = view.findViewById(R.id.rbHomeFromTrainingArea);
+        RadioButton rbBattleField = view.findViewById(R.id.rbBattleFieldFromTrainingArea);
 
 
         //Here we move Lutemons to Home or BattleField (They are currently in TrainingArea)
-        Button moveLutemonsButton = view.findViewById(R.id.MoveLutemonsButton);
+        Button moveLutemonsButton = view.findViewById(R.id.btnMoveLutemonsFromTrainingArea);
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemons.getCheckedRadioButtonId();
             if (selectedLutemonId != -1){
                 Lutemon chosenLutemon = MainActivity.trainingArea.getLutemon(selectedLutemonId);
 
-                if (rgId == R.id.rbHome){
+                if (rgId == R.id.rbHomeFromTrainingArea){
                     //Here we move lutemons to home
                     trainingArea.moveLutemon(chosenLutemon, MainActivity.home);
 
-                } else if (rgId == R.id.rbBattleField){
+                } else if (rgId == R.id.rbBattleFieldFromTrainingArea){
                     //Here we move lutemons to battleField
                     trainingArea.moveLutemon(chosenLutemon, MainActivity.battleField);
                 }
@@ -128,7 +126,7 @@ public class TrainFragment extends Fragment {
     }
 
     public RadioGroup makeRadioButtons(View view) {
-        RadioGroup rgTrainLutemons = view.findViewById(R.id.rgTrainLutemons);
+        RadioGroup rgTrainLutemons = view.findViewById(R.id.rgHomeLutemons);
         if (rgTrainLutemons == null) return null;
 
         rgTrainLutemons.removeAllViews(); // Clear the old ones if there is any

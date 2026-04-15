@@ -1,5 +1,8 @@
 package com.example.lutemongame.fragments;
 
+import static com.example.lutemongame.MainActivity.home;
+import static com.example.lutemongame.MainActivity.trainingArea;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +10,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
+import com.example.lutemongame.Lutemon;
+import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
 
 /**
@@ -61,7 +69,52 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        // Inflate the layout for this fragment
+
+        RadioGroup rgHomeLutemons = makeRadioButtons(view);
+
+        //RadioGroup for choosing where to move lutemons
+        RadioGroup rgChooseLutemonsFromHome = view.findViewById(R.id.rgChooseLutemonsFromHome);
+        RadioButton rbTrainingArea = view.findViewById(R.id.rbTrainingAreaFromHome);
+        RadioButton rbBattleField = view.findViewById(R.id.rbBattleFieldFromHome);
+
+
+        //Here we move Lutemons to TrainingArea or BattleField (They are currently in Home)
+        Button moveLutemonsButton = view.findViewById(R.id.btnMoveLutemonsFromHome);
+        moveLutemonsButton.setOnClickListener(view1 -> {
+            int selectedLutemonId = rgHomeLutemons.getCheckedRadioButtonId();
+            int rgId = rgChooseLutemonsFromHome.getCheckedRadioButtonId();
+            if (selectedLutemonId != -1){
+                Lutemon chosenLutemon = home.getLutemon(selectedLutemonId);
+
+                if (rgId == R.id.rbTrainingAreaFromHome){
+                    //Here we move lutemons to trainingarea
+                    home.moveLutemon(chosenLutemon, trainingArea);
+
+                } else if (rgId == R.id.rbBattleFieldFromHome){
+                    //Here we move lutemons to battleField
+                    home.moveLutemon(chosenLutemon, MainActivity.battleField);
+                }
+            }
+
+        });
         return view;
+    }
+    public RadioGroup makeRadioButtons(View view) {
+        RadioGroup rgHomeLutemons = view.findViewById(R.id.rgHomeLutemons);
+        if (rgHomeLutemons == null) return null;
+
+        rgHomeLutemons.removeAllViews(); // Clear the old ones if there is any
+
+        // Check what Lutemons are in Home
+        for (Lutemon lutemon : home.getLutemons().values()) {
+            RadioButton rb = new RadioButton(getContext());
+            rb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
+
+            // Set the radiobutton id to Lutemons own id
+            rb.setId(lutemon.getId());
+
+            rgHomeLutemons.addView(rb);
+        }
+        return rgHomeLutemons;
     }
 }
