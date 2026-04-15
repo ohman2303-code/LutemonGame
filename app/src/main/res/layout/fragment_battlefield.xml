@@ -6,9 +6,53 @@
     tools:context=".fragments.BattleFieldFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+
+    <Button
+        android:id="@+id/btnGoToFight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Taisteluun"
+        android:translationX="150dp"
+        android:translationY="475dp" />
+
+    <Button
+        android:id="@+id/btnMoveLutemonsFromBattleField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Siirrä valitut Lutemonit"
+        android:translationX="150dp"
+        android:translationY="550dp" />
+
+    <RadioGroup
+        android:id="@+id/rgBattleFieldLutemons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <CheckBox
+        android:id="@+id/cbLutemonsForBattle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        android:translationY="275dp" />
+
+    <RadioGroup
+        android:id="@+id/rgChooseLutemonsFromBattleField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationY="150dp">
+
+        <RadioButton
+            android:id="@+id/rbHomeFromBattleField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kotiin" />
+
+        <RadioButton
+            android:id="@+id/rbTrainingAreaFromBattleField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Treeniin" />
+
+    </RadioGroup>
 
 </FrameLayout>

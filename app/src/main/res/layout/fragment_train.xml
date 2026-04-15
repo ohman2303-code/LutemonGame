@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="Treenaa valittua Lutemonia!"
         android:translationX="150dp"
-        android:translationY="350dp" />
+        android:translationY="375dp" />
 
     <Button
         android:id="@+id/btnMoveLutemonsFromTrainingArea"
