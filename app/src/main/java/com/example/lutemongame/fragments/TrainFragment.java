@@ -1,7 +1,5 @@
 package com.example.lutemongame.fragments;
 
-import static com.example.lutemongame.MainActivity.trainingArea;
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,9 +11,12 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.lutemongame.BattleField;
+import com.example.lutemongame.Home;
 import com.example.lutemongame.Lutemon;
 import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
+import com.example.lutemongame.TrainingArea;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,6 +71,7 @@ public class TrainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_train, container, false);
 
         RadioGroup rgTrainLutemons = makeRadioButtons(view);
+        TrainingArea trainingArea = TrainingArea.getInstance();
 
         //RadioGroup for choosing where to move lutemons
         RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemonsFromTrainingArea);
@@ -83,15 +85,15 @@ public class TrainFragment extends Fragment {
             int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemons.getCheckedRadioButtonId();
             if (selectedLutemonId != -1){
-                Lutemon chosenLutemon = MainActivity.trainingArea.getLutemon(selectedLutemonId);
+                Lutemon chosenLutemon = trainingArea.getLutemon(selectedLutemonId);
 
                 if (rgId == R.id.rbHomeFromTrainingArea){
                     //Here we move lutemons to home
-                    trainingArea.moveLutemon(chosenLutemon, MainActivity.home);
+                    trainingArea.moveLutemon(chosenLutemon, Home.getInstance());
 
                 } else if (rgId == R.id.rbBattleFieldFromTrainingArea){
                     //Here we move lutemons to battleField
-                    trainingArea.moveLutemon(chosenLutemon, MainActivity.battleField);
+                    trainingArea.moveLutemon(chosenLutemon, BattleField.getInstance());
                 }
             }
 
@@ -110,7 +112,7 @@ public class TrainFragment extends Fragment {
                 if (clickCounter == 25 && timesLevelledUp <= 10){
                     //Here we level up Lutemon using TrainingArea
                     int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
-                    Lutemon chosenLutemon = MainActivity.trainingArea.getLutemon(selectedLutemonId);
+                    Lutemon chosenLutemon = trainingArea.getLutemon(selectedLutemonId);
                     trainingArea.train(chosenLutemon);
 
                     //After we set the clickCounter back to 0 and increase the timesLevelledUp by 1
@@ -127,12 +129,13 @@ public class TrainFragment extends Fragment {
 
     public RadioGroup makeRadioButtons(View view) {
         RadioGroup rgTrainLutemons = view.findViewById(R.id.rgHomeLutemons);
+        TrainingArea trainingArea = TrainingArea.getInstance();
         if (rgTrainLutemons == null) return null;
 
         rgTrainLutemons.removeAllViews(); // Clear the old ones if there is any
 
         // Check what Lutemons are in TrainingArea
-        for (Lutemon lutemon : MainActivity.trainingArea.getLutemons().values()) {
+        for (Lutemon lutemon : trainingArea.getLutemons().values()) {
             RadioButton rb = new RadioButton(getContext());
             rb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
 

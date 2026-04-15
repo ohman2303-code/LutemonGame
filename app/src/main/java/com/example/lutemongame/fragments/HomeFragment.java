@@ -12,10 +12,12 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.lutemongame.BattleField;
 import com.example.lutemongame.Home;
 import com.example.lutemongame.Lutemon;
 import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
+import com.example.lutemongame.TrainingArea;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,11 +91,11 @@ public class HomeFragment extends Fragment {
 
                 if (rgId == R.id.rbTrainingAreaFromHome){
                     //Here we move lutemons to trainingarea
-                    home.moveLutemon(chosenLutemon, MainActivity.trainingArea);
+                    home.moveLutemon(chosenLutemon, TrainingArea.getInstance());
 
                 } else if (rgId == R.id.rbBattleFieldFromHome){
                     //Here we move lutemons to battleField
-                    home.moveLutemon(chosenLutemon, MainActivity.battleField);
+                    home.moveLutemon(chosenLutemon, BattleField.getInstance());
                 }
             }
 

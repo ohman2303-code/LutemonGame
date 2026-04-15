@@ -1,5 +1,7 @@
 package com.example.lutemongame.fragments;
 
+import static com.example.lutemongame.MainActivity.trainingArea;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,10 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.lutemongame.BattleField;
+import com.example.lutemongame.Home;
 import com.example.lutemongame.Lutemon;
 import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
@@ -70,6 +74,36 @@ public class BattleFieldFragment extends Fragment {
 
         RadioGroup rgBattleFieldLutemons = makeRadioButtons(view);
         BattleField battleField = BattleField.getInstance();
+
+        //RadioGroup for choosing where to move lutemons
+        RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemonsFromBattleField);
+        RadioButton rbHome = view.findViewById(R.id.rbHomeFromBattleField);
+        RadioButton rbTrainingArea = view.findViewById(R.id.rbTrainingAreaFromBattleField);
+
+
+        //Here we move Lutemons to Home or TrainingArea (They are currently in BattleField)
+        Button moveLutemonsButton = view.findViewById(R.id.btnMoveLutemonsFromBattleField);
+        moveLutemonsButton.setOnClickListener(view1 -> {
+            int selectedLutemonId = rgBattleFieldLutemons.getCheckedRadioButtonId();
+            int rgId = rgChooseLutemons.getCheckedRadioButtonId();
+            if (selectedLutemonId != -1){
+                Lutemon chosenLutemon = battleField.getLutemon(selectedLutemonId);
+
+                if (rgId == R.id.rbHomeFromBattleField{
+                    //Here we move lutemons to home
+                    battleField.moveLutemon(chosenLutemon, Home.getInstance());
+
+                } else if (rgId == R.id.rbBattleFieldFromTrainingArea){
+                    //Here we move lutemons to battleField
+                    battleField.moveLutemon(chosenLutemon, BattleField.getInstance());
+                }
+            }
+
+        });
+
+
+
+
         return view;
     }
     public RadioGroup makeRadioButtons(View view) {
