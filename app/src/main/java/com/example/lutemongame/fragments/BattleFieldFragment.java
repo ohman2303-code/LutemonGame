@@ -1,6 +1,5 @@
 package com.example.lutemongame.fragments;
 
-import static com.example.lutemongame.MainActivity.trainingArea;
 
 import android.os.Bundle;
 

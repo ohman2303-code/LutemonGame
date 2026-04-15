@@ -13,6 +13,6 @@ public class LutemonsViewHolder extends RecyclerView.ViewHolder {
     public LutemonsViewHolder(@NonNull View itemView) {
         super(itemView);
         lutemonImage = itemView.findViewById(R.id.imageViewLutemon);
-        name = itemView.findViewById(R.id.LutemonNameText);
+        name = itemView.findViewById(R.id.lutemonName);
     }
 }
