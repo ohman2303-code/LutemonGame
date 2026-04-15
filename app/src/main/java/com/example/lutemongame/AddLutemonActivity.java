@@ -40,6 +40,32 @@ public class AddLutemonActivity extends AppCompatActivity {
                     int selectedId = colorGroup.getCheckedRadioButtonId();
                     RadioButton selectedButton = findViewById(selectedId);
                     String color = selectedButton.getText().toString();
+
+                    Lutemon newLutemon = null;
+
+                    switch(color){
+                        case "Valkoinen":
+                            newLutemon = new White(lutemonName);
+                            break;
+                        case "Musta":
+                            newLutemon = new Black(lutemonName);
+                            break;
+                        case "Vihreä":
+                            newLutemon = new Green(lutemonName);
+                        case "Turkoosi":
+                            newLutemon = new Turquoise(lutemonName);
+                            break;
+                        case "Oranssi":
+                            newLutemon = new Orange(lutemonName);
+                            break;
+                    }
+
+                    if(newLutemon != null){
+                        Home.getInstance().addLutemon(newLutemon);
+
+                        lutemonNameInput.setText("");
+
+                    }
                 });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
