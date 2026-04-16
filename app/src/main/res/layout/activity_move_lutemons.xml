@@ -42,17 +42,18 @@
         android:id="@+id/ReturnToMainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="16dp"
         android:onClick="switchToMain"
         android:text="Takaisin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout
         android:id="@+id/frame"
-        android:layout_width="412dp"
-        android:layout_height="573dp"
+        android:layout_width="406dp"
+        android:layout_height="615dp"
         app:layout_constraintBottom_toTopOf="@+id/ReturnToMainButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

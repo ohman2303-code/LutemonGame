@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LutemonGame">
         <activity
+            android:name=".FightActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListLutemonsActivity"
             android:exported="false" />
         <activity

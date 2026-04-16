@@ -1,6 +1,7 @@
 package com.example.lutemongame.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.lutemongame.BattleField;
+import com.example.lutemongame.FightActivity;
 import com.example.lutemongame.Home;
 import com.example.lutemongame.Lutemon;
 import com.example.lutemongame.MainActivity;
@@ -79,6 +81,14 @@ public class BattleFieldFragment extends Fragment {
         RadioButton rbHome = view.findViewById(R.id.rbHomeFromBattleField);
         RadioButton rbTrainingArea = view.findViewById(R.id.rbTrainingAreaFromBattleField);
 
+        Button btnGoToFight = view.findViewById(R.id.btnGoToFight);
+        btnGoToFight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchToFightActivity(v);
+            }
+        });
+
 
         //Here we move Lutemons to Home or TrainingArea (They are currently in BattleField)
         Button moveLutemonsButton = view.findViewById(R.id.btnMoveLutemonsFromBattleField);
@@ -123,5 +133,9 @@ public class BattleFieldFragment extends Fragment {
             rgBattleFieldLutemons.addView(rb);
         }
         return rgBattleFieldLutemons;
+    }
+    public void switchToFightActivity(View view){
+        Intent intent = new Intent(getActivity(), FightActivity.class);
+        startActivity(intent);
     }
 }
