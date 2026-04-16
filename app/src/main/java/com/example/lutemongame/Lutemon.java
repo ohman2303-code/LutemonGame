@@ -1,6 +1,8 @@
 package com.example.lutemongame;
 
-public abstract class Lutemon {
+import java.io.Serializable;
+
+public abstract class Lutemon implements Serializable {
 
     protected static int idCounter = 0;
 

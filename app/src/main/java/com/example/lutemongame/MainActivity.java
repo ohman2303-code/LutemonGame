@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -42,5 +44,15 @@ public class MainActivity extends AppCompatActivity {
     public void switchToMoveLutemonsActivity(View view){
         Intent intent = new Intent(this, MoveLutemonsActivity.class);
         startActivity(intent);
+    }
+    public void saveAllLutemons(View view) {
+        Home.getInstance().saveLutemons(this);
+        TrainingArea.getInstance().saveLutemons(this);
+        BattleField.getInstance().saveLutemons(this);
+    }
+    public void loadAllLutemons(View view) {
+        Home.getInstance().loadLutemons(this);
+        TrainingArea.getInstance().loadLutemons(this);
+        BattleField.getInstance().loadLutemons(this);
     }
 }

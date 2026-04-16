@@ -1,5 +1,10 @@
 package com.example.lutemongame;
 
+import android.content.Context;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 public abstract class Storage {
@@ -17,11 +22,22 @@ public abstract class Storage {
     public void listLutemons(){
 
     }
-    public void saveLutemons(){
-
+    public void saveLutemons(Context context) {
+        try {
+        ObjectOutputStream out = new ObjectOutputStream(context.openFileOutput(name + ".data", Context.MODE_PRIVATE));
+        out.writeObject(lutemons);
+        out.close();
+    } catch (IOException e) {
+        e.printStackTrace();
     }
-    public void loadLutemons(){
-
+    }
+    public void loadLutemons(Context context) {
+        try {
+            ObjectInputStream in = new ObjectInputStream(context.openFileInput(name + ".data"));
+            lutemons = (HashMap<Integer, Lutemon>) in.readObject();
+            in.close();
+        } catch (IOException | ClassNotFoundException e) {
+        }
     }
 
 
