@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/LutemonFighter"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="100dp"
         android:background="@drawable/main_header_background"
         android:fontFamily="@font/exo_2_thin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,6 +114,16 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSaveLutemons" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="202dp"
+        android:layout_height="380dp"
+        android:translationY="-140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/LutemonFighter"
+        app:srcCompat="@drawable/lutemonfighter_logo_no_bgt" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

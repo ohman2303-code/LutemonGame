@@ -7,6 +7,7 @@
     android:background="#673AB7"
     android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/lutemonName"
         android:layout_width="wrap_content"
@@ -45,7 +46,7 @@
         android:translationY="-80dp" />
 
     <TextView
-        android:id="@+id/NoteTitleText"
+        android:id="@+id/lutemonExpDef"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#E7E3DD"
@@ -54,13 +55,4 @@
         android:translationX="140dp"
         android:translationY="-80dp" />
 
-    <TextView
-        android:id="@+id/NoteContentText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#E2DCD4"
-        android:text="TextView"
-        android:textSize="20sp"
-        android:translationX="140dp"
-        android:translationY="-80dp" />
 </androidx.appcompat.widget.LinearLayoutCompat>
