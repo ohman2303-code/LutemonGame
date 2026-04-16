@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.lutemongame.BattleField;
 import com.example.lutemongame.Home;
@@ -104,6 +105,11 @@ public class HomeFragment extends Fragment {
             int rgId = rgChooseLutemonsFromHome.getCheckedRadioButtonId();
             
             if (selectedLutemonId != -1){
+                if (rgId == -1) {
+                    Toast.makeText(getContext(), "Valitse kohde!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Lutemon chosenLutemon = home.getLutemon(selectedLutemonId);
 
                 if (rgId == R.id.rbTrainingAreaFromHome){
@@ -116,6 +122,8 @@ public class HomeFragment extends Fragment {
 
                 makeRadioButtons(view);
                 ivHomeLutemonImage.setVisibility(View.INVISIBLE);
+            } else {
+                Toast.makeText(getContext(), "Valitse Lutemon!", Toast.LENGTH_SHORT).show();
             }
 
         });

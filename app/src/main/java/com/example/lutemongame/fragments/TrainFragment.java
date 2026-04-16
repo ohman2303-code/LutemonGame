@@ -80,8 +80,12 @@ public class TrainFragment extends Fragment {
         RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemonsFromTrainingArea);
         TextView txtPointsUntilLvlUp = view.findViewById(R.id.txtPointsUntilLvlUp);
         Button trainLutemonButton = view.findViewById(R.id.TrainLutemonButton);
+        
+        // Handle Training Image
         ImageView ivTrainLutemonImage = view.findViewById(R.id.ivTrainLutemonImage);
-        ivTrainLutemonImage.setVisibility(View.GONE);
+        if (ivTrainLutemonImage != null) {
+            ivTrainLutemonImage.setVisibility(View.GONE);
+        }
 
         txtPointsUntilLvlUp.setText("Valitse Lutemon treenattavaksi");
 
@@ -89,9 +93,15 @@ public class TrainFragment extends Fragment {
         rgTrainLutemons.setOnCheckedChangeListener((group, checkedId) -> {
             clickCounter = 0;
             updateTrainingStatus(txtPointsUntilLvlUp, checkedId);
-            ivTrainLutemonImage.setImageResource(TrainingArea.getInstance().getLutemon(checkedId).getImage());
-            ivTrainLutemonImage.setVisibility(View.VISIBLE);
+            if (checkedId != -1 && ivTrainLutemonImage != null) {
+                Lutemon lutemon = trainingArea.getLutemon(checkedId);
+                if (lutemon != null) {
+                    ivTrainLutemonImage.setImageResource(lutemon.getImage());
+                    ivTrainLutemonImage.setVisibility(View.VISIBLE);
+                }
+            }
         });
+        
         // Here we train the chosen Lutemon and update the status (possible until lvl 10)
         trainLutemonButton.setOnClickListener(v -> {
             int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
@@ -120,7 +130,13 @@ public class TrainFragment extends Fragment {
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemons.getCheckedRadioButtonId();
+            
             if (selectedLutemonId != -1){
+                if (rgId == -1) {
+                    Toast.makeText(getContext(), "Valitse kohde!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Lutemon chosenLutemon = trainingArea.getLutemon(selectedLutemonId);
 
                 if (rgId == R.id.rbHomeFromTrainingArea){
@@ -130,10 +146,13 @@ public class TrainFragment extends Fragment {
                     // Here we move Lutemon to BattleField
                     trainingArea.moveLutemon(chosenLutemon, BattleField.getInstance());
                 }
+                
                 makeRadioButtons(view);
-                ivTrainLutemonImage.setVisibility(View.INVISIBLE);
+                if (ivTrainLutemonImage != null) ivTrainLutemonImage.setVisibility(View.GONE);
                 txtPointsUntilLvlUp.setText("Valitse Lutemon treenattavaksi");
                 clickCounter = 0;
+            } else {
+                Toast.makeText(getContext(), "Valitse Lutemon!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -142,10 +161,10 @@ public class TrainFragment extends Fragment {
 
     // Here is the method for updating the training status of the chosen Lutemon
     private void updateTrainingStatus(TextView textView, int lutemonId) {
-        Lutemon l = TrainingArea.getInstance().getLutemon(lutemonId);
-        if (l != null) {
+        Lutemon lutemon = TrainingArea.getInstance().getLutemon(lutemonId);
+        if (lutemon != null) {
             int remaining = 25 - clickCounter;
-            textView.setText(remaining + " klikkausta seuraavaan tasoon.\nNykyinen taso: " + l.getExperience() + "/10");
+            textView.setText(remaining + " klikkausta seuraavaan tasoon.\nNykyinen taso: " + lutemon.getExperience() + "/10");
         }
     }
 
