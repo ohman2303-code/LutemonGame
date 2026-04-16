@@ -70,8 +70,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="206dp"
-        android:layout_height="280dp"
+        android:layout_width="160dp"
+        android:layout_height="195dp"
         android:layout_marginEnd="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,12 +81,37 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="187dp"
-        android:layout_height="337dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="149dp"
+        android:layout_height="195dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:srcCompat="@drawable/lutemon_turqoise" />
+
+    <Button
+        android:id="@+id/btnSaveLutemons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#3E4EAD"
+        android:text="Tallenna Lutemonit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GoToMoveLutemon" />
+
+    <Button
+        android:id="@+id/btnLoadLutemons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#3C4CA6"
+        android:text="Lataa Lutemonit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveLutemons" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
