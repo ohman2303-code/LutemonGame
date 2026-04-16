@@ -1,6 +1,7 @@
 package com.example.lutemongame;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,9 +27,13 @@ public class ListLutemonsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.ListLutemonsRV);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ArrayList<Lutemon> lutemons = new ArrayList<>(Home.getInstance().getLutemons().values());
+        // Gather Lutemons from all the storages
+        ArrayList<Lutemon> allLutemons = new ArrayList<>();
+        allLutemons.addAll(Home.getInstance().getLutemons().values());
+        allLutemons.addAll(TrainingArea.getInstance().getLutemons().values());
+        allLutemons.addAll(BattleField.getInstance().getLutemons().values());
 
-        adapter = new ListAdapter(this, lutemons);
+        adapter = new ListAdapter(this, allLutemons);
         recyclerView.setAdapter(adapter);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -36,5 +41,9 @@ public class ListLutemonsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void returnBack(View view) {
+        finish();
     }
 }
