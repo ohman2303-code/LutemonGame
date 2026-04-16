@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -77,8 +78,23 @@ public class HomeFragment extends Fragment {
 
         //RadioGroup for choosing where to move lutemons
         RadioGroup rgChooseLutemonsFromHome = view.findViewById(R.id.rgChooseLutemonsFromHome);
-        RadioButton rbTrainingArea = view.findViewById(R.id.rbTrainingAreaFromHome);
-        RadioButton rbBattleField = view.findViewById(R.id.rbBattleFieldFromHome);
+        ImageView ivHomeLutemonImage = view.findViewById(R.id.ivHomeLutemonImage);
+        
+        // First we hide the picture of the chosen Lutemon
+        ivHomeLutemonImage.setVisibility(View.GONE);
+
+        // Update the photo when the Lutemon is chosen
+        rgHomeLutemons.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != -1) {
+                Lutemon chosenLutemon = home.getLutemon(checkedId);
+                if (chosenLutemon != null) {
+                    ivHomeLutemonImage.setImageResource(chosenLutemon.getImage());
+                    ivHomeLutemonImage.setVisibility(View.VISIBLE);
+                }
+            } else {
+                ivHomeLutemonImage.setVisibility(View.GONE);
+            }
+        });
 
 
         //Here we move Lutemons to TrainingArea or BattleField (They are currently in Home)
@@ -86,17 +102,20 @@ public class HomeFragment extends Fragment {
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgHomeLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemonsFromHome.getCheckedRadioButtonId();
+            
             if (selectedLutemonId != -1){
                 Lutemon chosenLutemon = home.getLutemon(selectedLutemonId);
 
                 if (rgId == R.id.rbTrainingAreaFromHome){
                     //Here we move lutemons to trainingarea
                     home.moveLutemon(chosenLutemon, TrainingArea.getInstance());
-
                 } else if (rgId == R.id.rbBattleFieldFromHome){
                     //Here we move lutemons to battleField
                     home.moveLutemon(chosenLutemon, BattleField.getInstance());
                 }
+
+                makeRadioButtons(view);
+                ivHomeLutemonImage.setVisibility(View.INVISIBLE);
             }
 
         });

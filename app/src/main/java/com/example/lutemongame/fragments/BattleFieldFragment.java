@@ -10,15 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.lutemongame.BattleField;
 import com.example.lutemongame.FightActivity;
 import com.example.lutemongame.Home;
 import com.example.lutemongame.Lutemon;
-import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
+import com.example.lutemongame.TrainingArea;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,21 +79,40 @@ public class BattleFieldFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_battlefield, container, false);
 
 
-        RadioGroup rgBattleFieldLutemons = makeRadioButtons(view);
-        BattleField battleField = BattleField.getInstance();
+        updateLutemonLists(view);
 
         //RadioGroup for choosing where to move lutemons
         RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemonsFromBattleField);
-        RadioButton rbHome = view.findViewById(R.id.rbHomeFromBattleField);
-        RadioButton rbTrainingArea = view.findViewById(R.id.rbTrainingAreaFromBattleField);
+        BattleField battleField = BattleField.getInstance();
+        RadioGroup rgBattleFieldLutemons = view.findViewById(R.id.rgBattleFieldLutemons);
+        ImageView ivBattleFieldLutemonImage = view.findViewById(R.id.ivBattleFieldLutemonImage);
 
         Button btnGoToFight = view.findViewById(R.id.btnGoToFight);
         btnGoToFight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToFightActivity(v);
+                switchToFightActivity(view);
             }
         });
+
+
+        // First we hide the picture of the chosen Lutemon
+        ivBattleFieldLutemonImage.setVisibility(View.GONE);
+
+        // Update the photo when the Lutemon is chosen
+        rgBattleFieldLutemons.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != -1) {
+                Lutemon chosenLutemon = battleField.getLutemon(checkedId);
+                if (chosenLutemon != null) {
+                    ivBattleFieldLutemonImage.setImageResource(chosenLutemon.getImage());
+                    ivBattleFieldLutemonImage.setVisibility(View.VISIBLE);
+                }
+            } else {
+                ivBattleFieldLutemonImage.setVisibility(View.GONE);
+            }
+        });
+
+
 
 
         //Here we move Lutemons to Home or TrainingArea (They are currently in BattleField)
@@ -95,47 +120,80 @@ public class BattleFieldFragment extends Fragment {
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgBattleFieldLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemons.getCheckedRadioButtonId();
+            
             if (selectedLutemonId != -1){
                 Lutemon chosenLutemon = battleField.getLutemon(selectedLutemonId);
 
                 if (rgId == R.id.rbHomeFromBattleField){
-                    //Here we move lutemons to home
                     battleField.moveLutemon(chosenLutemon, Home.getInstance());
-
-                } else if (rgId == R.id.rbBattleFieldFromTrainingArea){
-                    //Here we move lutemons to battleField
-                    battleField.moveLutemon(chosenLutemon, BattleField.getInstance());
+                } else if (rgId == R.id.rbTrainingAreaFromBattleField){
+                    battleField.moveLutemon(chosenLutemon, TrainingArea.getInstance());
                 }
+                
+                // Refresh both lists and the picture after moving
+                updateLutemonLists(view);
+                ivBattleFieldLutemonImage.setVisibility(View.INVISIBLE);
             }
-
         });
-
-
-
 
         return view;
     }
-    public RadioGroup makeRadioButtons(View view) {
+
+    private void updateLutemonLists(View view) {
+        makeRadioButtons(view);
+        makeCheckBoxes(view);
+    }
+
+    public void makeRadioButtons(View view) {
         RadioGroup rgBattleFieldLutemons = view.findViewById(R.id.rgBattleFieldLutemons);
-        BattleField battleField= BattleField.getInstance();
-        if (rgBattleFieldLutemons == null) return null;
+        BattleField battleField = BattleField.getInstance();
+        if (rgBattleFieldLutemons == null) return;
 
-        rgBattleFieldLutemons.removeAllViews(); // Clear the old ones if there is any
+        rgBattleFieldLutemons.removeAllViews();
 
-        // Check what Lutemons are in BattleField
         for (Lutemon lutemon : battleField.getLutemons().values()) {
             RadioButton rb = new RadioButton(getContext());
             rb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
-
-            // Set the radiobutton id to Lutemons own id
             rb.setId(lutemon.getId());
-
             rgBattleFieldLutemons.addView(rb);
         }
-        return rgBattleFieldLutemons;
     }
+
+    public void makeCheckBoxes(View view) {
+        LinearLayout llLutemonsForBattle = view.findViewById(R.id.llLutemonsForBattle);
+        BattleField battleField = BattleField.getInstance();
+        if (llLutemonsForBattle == null) return;
+
+        llLutemonsForBattle.removeAllViews();
+
+        for (Lutemon lutemon : battleField.getLutemons().values()) {
+            CheckBox cb = new CheckBox(getContext());
+            cb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
+            cb.setId(lutemon.getId());
+            llLutemonsForBattle.addView(cb);
+        }
+    }
+
     public void switchToFightActivity(View view){
-        Intent intent = new Intent(getActivity(), FightActivity.class);
-        startActivity(intent);
+        ArrayList<Integer> selectedLutemonIds = new ArrayList<>();
+        LinearLayout llLutemonsForBattle = view.findViewById(R.id.llLutemonsForBattle);
+        
+        for (int i = 0; i < llLutemonsForBattle.getChildCount(); i++) {
+            View v = llLutemonsForBattle.getChildAt(i);
+            if (v instanceof CheckBox) {
+                CheckBox cb = (CheckBox) v;
+                if (cb.isChecked()) {
+                    selectedLutemonIds.add(cb.getId());
+                }
+            }
+        }
+
+        if (selectedLutemonIds.size() == 2) {
+            Intent intent = new Intent(getActivity(), FightActivity.class);
+            intent.putIntegerArrayListExtra("selectedLutemonIds", selectedLutemonIds);
+            startActivity(intent);
+        } else {
+            Toast.makeText(getContext(), "Valitse tasan kaksi Lutemonia taisteluun!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
