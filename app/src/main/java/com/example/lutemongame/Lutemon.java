@@ -99,7 +99,7 @@ public abstract class Lutemon {
         this.image = image;
     }
 
-    public void defence(Lutemon enemy){
+    public void defense(Lutemon enemy){
 
         int damage = enemy.getAttackPower() - this.defensePower;
 
