@@ -2,7 +2,7 @@ package com.example.lutemongame;
 
 public class BattleField extends Storage{
 
-    private static BattleField battleField = null;
+    public static BattleField battleField = null;
 
     private BattleField(){
         this.name = "BattleField";
