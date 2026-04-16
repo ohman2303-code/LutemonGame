@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:background="#673AB7"
+    android:background="#F44336"
     android:padding="10dp">
 
     <ImageView
@@ -18,8 +18,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/imageViewLutemon"
         android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/imageViewLutemon"
         android:orientation="vertical">
 
         <TextView
@@ -27,7 +27,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#F4F0F0"
+            android:backgroundTint="#F44336"
             android:text="Nimi"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#F20000"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -36,7 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FBE2DFDA"
+            android:backgroundTint="#F44336"
             android:text="HP: 0"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <TextView
@@ -44,7 +49,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#EBE8E4"
+            android:backgroundTint="#F44336"
             android:text="ATK: 0"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <TextView
@@ -52,7 +59,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#E7E3DD"
+            android:backgroundTint="#F44336"
             android:text="DEF/EXP: 0"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
     </LinearLayout>
 
