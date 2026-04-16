@@ -1,6 +1,9 @@
 package com.example.lutemongame;
 
 public abstract class Lutemon {
+
+    protected static int idCounter = 0;
+
     protected String name;
     protected String color;
     protected int attackPower;
@@ -23,7 +26,7 @@ public abstract class Lutemon {
     }
 
     public int getAttackPower() {
-        return attackPower;
+        return attackPower + this.experience;
     }
 
     public void setAttackPower(int attackPower) {
@@ -96,4 +99,17 @@ public abstract class Lutemon {
         this.image = image;
     }
 
-}
+    public void defence(Lutemon enemy){
+
+        int damage = enemy.getAttackPower() - this.defensePower;
+
+        if (damage < 0){
+            damage = 0;
+        }
+
+        this.health = this.health - damage;
+        }
+    }
+
+
+
