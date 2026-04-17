@@ -12,6 +12,7 @@
         android:id="@+id/btnGoToFight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
         android:text="Taisteluun"
         android:translationX="150dp"
         android:translationY="475dp" />
@@ -20,6 +21,7 @@
         android:id="@+id/btnMoveLutemonsFromBattleField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
         android:text="Siirrä valitut Lutemonit"
         android:translationX="150dp"
         android:translationY="550dp" />
