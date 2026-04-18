@@ -1,6 +1,8 @@
 package com.example.lutemongame;
 
 public class Home extends Storage{
+
+    //create singleton
     private static Home home = null;
 
     private Home(){
@@ -19,9 +21,6 @@ public class Home extends Storage{
         super.addLutemon(l);
     }
 
-    public void createLutemon(String name, String type){
 
-
-    }
 
 }

@@ -2,6 +2,7 @@ package com.example.lutemongame;
 
 public class TrainingArea extends Storage{
 
+    //create singleton
 
     private static TrainingArea trainingarea = null;
 

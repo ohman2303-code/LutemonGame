@@ -43,6 +43,8 @@ public class AddLutemonActivity extends AppCompatActivity {
 
                     Lutemon newLutemon = null;
 
+                    //create Lutemon based on color
+
                     switch(color){
                         case "Valkoinen":
                             newLutemon = new White(lutemonName);

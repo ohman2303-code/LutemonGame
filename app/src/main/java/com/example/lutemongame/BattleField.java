@@ -2,6 +2,8 @@ package com.example.lutemongame;
 
 public class BattleField extends Storage{
 
+    //create singleton
+
     public static BattleField battleField = null;
 
     private BattleField(){

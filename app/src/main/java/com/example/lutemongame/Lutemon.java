@@ -104,6 +104,8 @@ public abstract class Lutemon implements Serializable {
         this.image = image;
     }
 
+    //Damage is random
+
     public void defense(Lutemon enemy){
 
         int damage = enemy.getAttackPower() - this.defensePower + random.nextInt(5);
