@@ -36,6 +36,7 @@
         android:id="@+id/TrainLutemonButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
         android:text="Treenaa valittua Lutemonia!"
         android:translationX="150dp"
         android:translationY="375dp" />
@@ -44,6 +45,7 @@
         android:id="@+id/btnMoveLutemonsFromTrainingArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
         android:text="Siirrä valitut Lutemonit!"
         android:translationX="150dp"
         android:translationY="450dp" />

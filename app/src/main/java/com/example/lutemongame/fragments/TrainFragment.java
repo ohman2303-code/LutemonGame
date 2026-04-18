@@ -117,7 +117,7 @@ public class TrainFragment extends Fragment {
                 if (clickCounter >= 25) {
                     trainingArea.train(chosenLutemon);
                     clickCounter = 0;
-                    Toast.makeText(getContext(), chosenLutemon.getName() + " nousi tasolle!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), chosenLutemon.getName() + " nousi seuraavalle tasolle!", Toast.LENGTH_SHORT).show();
                 }
                 updateTrainingStatus(txtPointsUntilLvlUp, selectedLutemonId);
             } else {
