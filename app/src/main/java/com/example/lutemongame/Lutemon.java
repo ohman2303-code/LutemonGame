@@ -1,8 +1,11 @@
 package com.example.lutemongame;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public abstract class Lutemon implements Serializable {
+
+    Random random = new Random();
 
     protected static int idCounter = 0;
 
@@ -103,7 +106,7 @@ public abstract class Lutemon implements Serializable {
 
     public void defense(Lutemon enemy){
 
-        int damage = enemy.getAttackPower() - this.defensePower;
+        int damage = enemy.getAttackPower() - this.defensePower + random.nextInt(5);
 
         if (damage < 0){
             damage = 0;
