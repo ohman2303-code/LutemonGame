@@ -81,9 +81,10 @@ public class TrainFragment extends Fragment {
         RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemonsFromTrainingArea);
         TextView txtPointsUntilLvlUp = view.findViewById(R.id.txtPointsUntilLvlUp);
         Button trainLutemonButton = view.findViewById(R.id.TrainLutemonButton);
+        Button moveLutemonsButton = view.findViewById(R.id.btnMoveLutemonsFromTrainingArea);
+        ImageView ivTrainLutemonImage = view.findViewById(R.id.ivTrainLutemonImage);
         
         // Handle Training Image
-        ImageView ivTrainLutemonImage = view.findViewById(R.id.ivTrainLutemonImage);
         if (ivTrainLutemonImage != null) {
             ivTrainLutemonImage.setVisibility(View.GONE);
         }
@@ -129,7 +130,7 @@ public class TrainFragment extends Fragment {
         });
 
         // Here is the mechanic for moving Lutemons from TrainingArea to Home or BattleField
-        Button moveLutemonsButton = view.findViewById(R.id.btnMoveLutemonsFromTrainingArea);
+
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemons.getCheckedRadioButtonId();
@@ -155,7 +156,7 @@ public class TrainFragment extends Fragment {
                 txtPointsUntilLvlUp.setText("Valitse Lutemon treenattavaksi");
                 clickCounter = 0;
             } else {
-                Toast.makeText(getContext(), "Valitse Lutemon!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Valitse siirrettävä Lutemon!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -180,7 +181,7 @@ public class TrainFragment extends Fragment {
         rgTrainLutemons.removeAllViews();
         for (Lutemon lutemon : trainingArea.getLutemons().values()) {
             RadioButton rb = new RadioButton(getContext());
-            rb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
+            rb.setText(lutemon.getName() + ", HP: " + lutemon.getHealth() + "/" + lutemon.getMaxHealth() +  " (" + lutemon.getColor() + ")");
             rb.setId(lutemon.getId());
             rgTrainLutemons.addView(rb);
         }

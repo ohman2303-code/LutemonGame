@@ -17,7 +17,7 @@
         android:id="@+id/rgChooseLutemonsFromTrainingArea"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:translationY="250dp">
+        android:translationY="300dp">
 
         <RadioButton
             android:id="@+id/rbHomeFromTrainingArea"
@@ -39,7 +39,7 @@
         android:backgroundTint="#F44336"
         android:text="Treenaa valittua Lutemonia!"
         android:translationX="150dp"
-        android:translationY="375dp" />
+        android:translationY="475dp" />
 
     <Button
         android:id="@+id/btnMoveLutemonsFromTrainingArea"
@@ -48,7 +48,7 @@
         android:backgroundTint="#F44336"
         android:text="Siirrä valitut Lutemonit!"
         android:translationX="150dp"
-        android:translationY="450dp" />
+        android:translationY="550dp" />
 
     <TextView
         android:id="@+id/txtPointsUntilLvlUp"
@@ -63,7 +63,7 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:src="@drawable/lutemon_black"
-        android:translationX="200dp"
+        android:translationX="230dp"
         android:translationY="0dp" />
 
 </FrameLayout>

@@ -74,12 +74,13 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         RadioGroup rgHomeLutemons = makeRadioButtons(view);
+        Button healLutemonButton = view.findViewById(R.id.btnHealLutemon);
+        RadioGroup rgChooseLutemonsFromHome = view.findViewById(R.id.rgChooseLutemonsFromHome);
+        ImageView ivHomeLutemonImage = view.findViewById(R.id.ivHomeLutemonImage);
+        Button moveLutemonsButton = view.findViewById(R.id.btnMoveLutemonsFromHome);
         Home home = Home.getInstance();
 
 
-        //RadioGroup for choosing where to move lutemons
-        RadioGroup rgChooseLutemonsFromHome = view.findViewById(R.id.rgChooseLutemonsFromHome);
-        ImageView ivHomeLutemonImage = view.findViewById(R.id.ivHomeLutemonImage);
         
         // First we hide the picture of the chosen Lutemon
         ivHomeLutemonImage.setVisibility(View.GONE);
@@ -97,9 +98,24 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //Here we heal the chosen Lutemon
+
+        healLutemonButton.setOnClickListener(View -> {
+            int selectedLutemonId = rgHomeLutemons.getCheckedRadioButtonId();
+            if (selectedLutemonId != -1) {
+                Lutemon chosenLutemonForHeal = home.getLutemon(selectedLutemonId);
+                home.healLutemon(chosenLutemonForHeal);
+                Toast.makeText(getContext(), chosenLutemonForHeal.getName() + " on parannettu!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(getContext(), "Valitse ensin parannettava Lutemon!", Toast.LENGTH_SHORT).show();
+            }
+            makeRadioButtons(view);
+        });
+
 
         //Here we move Lutemons to TrainingArea or BattleField (They are currently in Home)
-        Button moveLutemonsButton = view.findViewById(R.id.btnMoveLutemonsFromHome);
+
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgHomeLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemonsFromHome.getCheckedRadioButtonId();
@@ -123,7 +139,7 @@ public class HomeFragment extends Fragment {
                 makeRadioButtons(view);
                 ivHomeLutemonImage.setVisibility(View.INVISIBLE);
             } else {
-                Toast.makeText(getContext(), "Valitse Lutemon!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Valitse siirrettävä Lutemon!", Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -139,7 +155,7 @@ public class HomeFragment extends Fragment {
         // Check what Lutemons are in Home
         for (Lutemon lutemon : home.getLutemons().values()) {
             RadioButton rb = new RadioButton(getContext());
-            rb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
+            rb.setText(lutemon.getName() + ", HP: " + lutemon.getHealth() + "/" + lutemon.getMaxHealth() +  " (" + lutemon.getColor() + ")");
 
             // Set the radiobutton id to Lutemons own id
             rb.setId(lutemon.getId());

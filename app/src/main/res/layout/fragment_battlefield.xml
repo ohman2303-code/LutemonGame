@@ -40,11 +40,11 @@
         android:translationY="275dp" />
 
     <RadioGroup
-        android:id="@+id/rgChooseLutemonsFromBattleField"
+        android:id="@+id/rgChooseTargetFromBattleField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:translationX="0dp"
-        android:translationY="250dp">
+        android:translationY="300dp">
 
         <RadioButton
             android:id="@+id/rbHomeFromBattleField"
@@ -65,7 +65,7 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:src="@drawable/lutemon_black"
-        android:translationX="200dp"
+        android:translationX="230dp"
         android:translationY="0dp" />
 
 </FrameLayout>
