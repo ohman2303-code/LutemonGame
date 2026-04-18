@@ -85,6 +85,12 @@ public abstract class Lutemon implements Serializable {
     public void setImage(int image) {
         this.image = image;
     }
+    public static int getIdCounter() {
+        return idCounter;
+    }
+    public static void setIdCounter(int counter) {
+        idCounter = counter;
+    }
 
     protected int experience;
     protected int health;

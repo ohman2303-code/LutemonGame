@@ -11,7 +11,9 @@ public abstract class Storage {
     protected String name;
     protected HashMap<Integer, Lutemon> lutemons = new HashMap<>();
     public void addLutemon(Lutemon l) {
-        lutemons.put(l.getId(), l);
+        if (l != null) {
+            lutemons.put(l.getId(), l);
+        }
     }
     public Lutemon getLutemon(int id){
         return lutemons.get(id);
@@ -36,17 +38,23 @@ public abstract class Storage {
             ObjectInputStream in = new ObjectInputStream(context.openFileInput(name + ".data"));
             lutemons = (HashMap<Integer, Lutemon>) in.readObject();
             in.close();
+            for (Integer id : lutemons.keySet()) {
+                if (id >= Lutemon.getIdCounter())
+                    Lutemon.setIdCounter(id + 1);
+            }
         } catch (IOException | ClassNotFoundException e) {
         }
     }
 
 
     public void moveLutemon(Lutemon lutemon, Storage target) {
-        // delete from this storage
-        this.lutemons.remove(lutemon.getId());
+        if (lutemon != null && target != null) {
+            // delete from this storage
+            this.lutemons.remove(lutemon.getId());
 
-        // add to target storage
-        target.addLutemon(lutemon);
+            // add to target storage
+            target.addLutemon(lutemon);
+        }
     }
 
 }

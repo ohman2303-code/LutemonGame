@@ -55,12 +55,20 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/lutemonExpDef"
+            android:id="@+id/lutemonDefence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DEF: 0"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/lutemonExp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#E7E3DD"
             android:backgroundTint="#F44336"
-            android:text="DEF/EXP: 0"
+            android:text="EXP: 0"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
     </LinearLayout>

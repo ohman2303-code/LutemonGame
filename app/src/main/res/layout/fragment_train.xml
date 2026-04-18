@@ -17,7 +17,7 @@
         android:id="@+id/rgChooseLutemonsFromTrainingArea"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:translationY="150dp" >
+        android:translationY="250dp">
 
         <RadioButton
             android:id="@+id/rbHomeFromTrainingArea"
@@ -64,6 +64,6 @@
         android:layout_height="150dp"
         android:src="@drawable/lutemon_black"
         android:translationX="200dp"
-        android:translationY="75dp" />
+        android:translationY="0dp" />
 
 </FrameLayout>

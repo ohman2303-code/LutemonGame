@@ -3,7 +3,8 @@ package com.example.lutemongame;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RadioGroup;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +12,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.lutemongame.fragments.BattleFieldFragment;
 import com.example.lutemongame.fragments.HomeFragment;
 import com.example.lutemongame.fragments.TrainFragment;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MoveLutemonsActivity extends AppCompatActivity {
 
@@ -23,37 +27,83 @@ public class MoveLutemonsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_move_lutemons);
+
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        ViewPager2 viewPager = findViewById(R.id.viewPager);
+
+        TabAdapter adapter = new TabAdapter(this);
+        viewPager.setAdapter(adapter);
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                // Find the fragment based on tag and update its radio buttons
+                Fragment fragment = getSupportFragmentManager().findFragmentByTag("f" + position);
+                if (fragment != null) {
+                    if (fragment instanceof HomeFragment) {
+                        ((HomeFragment) fragment).makeRadioButtons(fragment.getView());
+                    } else if (fragment instanceof TrainFragment) {
+                        ((TrainFragment) fragment).makeRadioButtons(fragment.getView());
+                    } else if (fragment instanceof BattleFieldFragment) {
+                        ((BattleFieldFragment) fragment).makeRadioButtons(fragment.getView());
+                    }
+                }
+            }
+        });
+
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            switch (position) {
+                case 0:
+                    tab.setText("Koti");
+                    break;
+                case 1:
+                    tab.setText("Treeni");
+                    break;
+                case 2:
+                    tab.setText("Taistelu");
+                    break;
+            }
+        }).attach();
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button homeFragmentButton = findViewById(R.id.HomeFragmentButton);
-        Button trainFragmentButton = findViewById(R.id.TrainFragmentButton);
-        Button fightFragmentButton = findViewById(R.id.FightFragmentButton);
 
-        homeFragmentButton.setOnClickListener(listener);
-        trainFragmentButton.setOnClickListener(listener);
-        fightFragmentButton.setOnClickListener(listener);
-    }
-    private View.OnClickListener listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Fragment fragment;
-            if (v.getId() == R.id.HomeFragmentButton) {
-                fragment = new HomeFragment();
-            } else if (v.getId() == R.id.TrainFragmentButton) {
-                fragment = new TrainFragment();
-            } else {
-                fragment = new BattleFieldFragment();
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                // Find the fragment based on tag and clear its radio buttons
+                Fragment fragment = getSupportFragmentManager().findFragmentByTag("f" + position);
+                if (fragment != null) {
+                    View view = fragment.getView();
+                    if (view != null) {
+                        RadioGroup rg = null;
+                        ImageView iv = null; // Hide the image
+
+                        if (fragment instanceof HomeFragment) {
+                            rg = view.findViewById(R.id.rgHomeLutemons);
+                            iv = view.findViewById(R.id.ivHomeLutemonImage);
+                        } else if (fragment instanceof TrainFragment) {
+                            rg = view.findViewById(R.id.rgHomeLutemons);
+                            iv = view.findViewById(R.id.ivTrainLutemonImage);
+                        } else if (fragment instanceof BattleFieldFragment) {
+                            rg = view.findViewById(R.id.rgBattleFieldLutemons);
+                            iv = view.findViewById(R.id.ivBattleFieldLutemonImage);
+                        }
+
+                        if (rg != null) rg.clearCheck();
+                        if (iv != null) iv.setVisibility(View.GONE);
+                    }
+                }
             }
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame, fragment)
-                    .commit();
-        }
-    };
+        });
+    }
+
     public void switchToMain(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }

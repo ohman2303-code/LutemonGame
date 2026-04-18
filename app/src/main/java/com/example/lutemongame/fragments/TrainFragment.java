@@ -74,9 +74,10 @@ public class TrainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_train, container, false);
 
-        RadioGroup rgTrainLutemons = makeRadioButtons(view);
+        makeRadioButtons(view);
         TrainingArea trainingArea = TrainingArea.getInstance();
 
+        RadioGroup rgTrainLutemons = view.findViewById(R.id.rgHomeLutemons);
         RadioGroup rgChooseLutemons = view.findViewById(R.id.rgChooseLutemonsFromTrainingArea);
         TextView txtPointsUntilLvlUp = view.findViewById(R.id.txtPointsUntilLvlUp);
         Button trainLutemonButton = view.findViewById(R.id.TrainLutemonButton);
@@ -99,6 +100,8 @@ public class TrainFragment extends Fragment {
                     ivTrainLutemonImage.setImageResource(lutemon.getImage());
                     ivTrainLutemonImage.setVisibility(View.VISIBLE);
                 }
+            } else {
+                ivTrainLutemonImage.setVisibility(View.GONE); //If lutemon is not chosen hide the image
             }
         });
         
@@ -183,4 +186,12 @@ public class TrainFragment extends Fragment {
         }
         return rgTrainLutemons;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getView() != null) {
+            makeRadioButtons(getView());
+        }
+    }
+
 }

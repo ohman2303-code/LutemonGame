@@ -40,11 +40,14 @@ public class ListAdapter extends RecyclerView.Adapter<LutemonsViewHolder>{
         String attack = "Hyökkäys: " + lutemon.getAttackPower();
         holder.attack.setText(attack);
 
+        String defence = "Puolustus: " + lutemon.getDefensePower();
+        holder.defence.setText(defence);
+
         String health = "Elämä: " + lutemon.getHealth();
         holder.health.setText(health);
 
-        String expDef = "Kokemus: " + lutemon.getExperience() + " Puolustus: " + lutemon.getDefensePower();
-        holder.experience.setText(expDef);
+        String exp = "Kokemus: " + lutemon.getExperience();
+        holder.experience.setText(exp);
 
         //Set picture
         holder.lutemonImage.setImageResource(lutemon.getImage());

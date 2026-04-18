@@ -15,7 +15,7 @@
         android:id="@+id/rgChooseLutemonsFromHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:translationY="150dp">
+        android:translationY="250dp">
 
         <RadioButton
             android:id="@+id/rbTrainingAreaFromHome"
@@ -37,7 +37,7 @@
         android:backgroundTint="#F44336"
         android:text="Siirrä valitut Lutemonit"
         android:translationX="150dp"
-        android:translationY="450dp" />
+        android:translationY="550dp" />
 
     <ImageView
         android:id="@+id/ivHomeLutemonImage"
@@ -45,5 +45,14 @@
         android:layout_height="150dp"
         android:src="@drawable/lutemon_black"
         android:translationX="200dp"
-        android:translationY="75dp" />
+        android:translationY="0dp" />
+
+    <Button
+        android:id="@+id/btnHealLutemon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
+        android:text="Paranna valittu Lutemon"
+        android:translationX="150dp"
+        android:translationY="475dp" />
 </FrameLayout>

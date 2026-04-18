@@ -196,4 +196,11 @@ public class BattleFieldFragment extends Fragment {
             Toast.makeText(getContext(), "Valitse tasan kaksi Lutemonia taisteluun!", Toast.LENGTH_SHORT).show();
         }
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getView() != null) {
+            updateLutemonLists(getView());
+        }
+    }
 }

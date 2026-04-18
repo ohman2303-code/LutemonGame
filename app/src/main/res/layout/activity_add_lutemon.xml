@@ -88,4 +88,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddLutemonButton" />
+
+    <ImageView
+        android:id="@+id/chooseLutemonImage"
+        android:layout_width="177dp"
+        android:layout_height="217dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/returnToMainButton"
+        app:srcCompat="@drawable/lutemon_black" />
 </androidx.constraintlayout.widget.ConstraintLayout>

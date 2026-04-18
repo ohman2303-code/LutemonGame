@@ -148,4 +148,11 @@ public class HomeFragment extends Fragment {
         }
         return rgHomeLutemons;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getView() != null) {
+            makeRadioButtons(getView());
+        }
+    }
 }

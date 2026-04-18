@@ -20,6 +20,9 @@ public class Home extends Storage{
         l.setHealth(l.getMaxHealth());
         super.addLutemon(l);
     }
+    public void healLutemon(Lutemon lutemon){
+        lutemon.setHealth(lutemon.getMaxHealth());
+    }
 
 
 
