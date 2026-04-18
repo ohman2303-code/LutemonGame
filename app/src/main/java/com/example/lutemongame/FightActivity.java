@@ -4,6 +4,7 @@ import static com.example.lutemongame.BattleField.battleField;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -22,7 +23,8 @@ public class FightActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_fight);
 
-        TextView battleLog = findViewById(R.id.BattleLog);
+        TextView battleLog = findViewById(R.id.FightLog);
+        ScrollView scrollView = findViewById(R.id.ScrollViewFight);
 
         ArrayList<Integer> selectedIds = getIntent().getIntegerArrayListExtra("selectedLutemonIds");
 
@@ -36,6 +38,9 @@ public class FightActivity extends AppCompatActivity {
             String battle = battleField.fight(fighter1, fighter2);
 
             battleLog.setText(battle);
+
+            //ScrollView to bottom
+            scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
             }
         }else{
             String mistake = "Virhe! Ei löytynyt lutemonia!";

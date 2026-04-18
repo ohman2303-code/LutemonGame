@@ -20,14 +20,29 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/BattleLog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ScrollView
+        android:id="@+id/ScrollViewFight"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnReturnToBattleFieldFragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/FightLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Taistelu alkaa..."
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
