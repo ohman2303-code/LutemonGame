@@ -81,7 +81,6 @@ public class FightActivity extends AppCompatActivity {
 
         // Animation
         handler.postDelayed(() -> {
-            battleLog.append(f1.getName() + " hyökkää!\n");
 
             // Make explosion
             showVisualEffect(ivFighter2, R.drawable.explosion);
@@ -94,7 +93,7 @@ public class FightActivity extends AppCompatActivity {
                 showVisualEffect(ivFighter2, R.drawable.cross_mark); // Set cross mark
                 ivFighter2.setAlpha(0.5f);
             }
-        }, delay * 5);
+        }, delay * 2);
     }
     //AI HELP
 
