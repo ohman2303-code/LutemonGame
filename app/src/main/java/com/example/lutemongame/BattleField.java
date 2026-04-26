@@ -1,5 +1,7 @@
 package com.example.lutemongame;
 
+import android.content.Context;
+
 public class BattleField extends Storage{
 
     //create singleton
@@ -17,21 +19,23 @@ public class BattleField extends Storage{
         return battleField;
     }
 
-    public String fight(Lutemon A, Lutemon B) {
+    public String fight(Context context, Lutemon A, Lutemon B) {
         StringBuilder sb = new StringBuilder();
 
         while (A.getHealth() > 0 && B.getHealth() > 0) {
 
             //fightlog
 
-            sb.append("1: ").append(A.getName()).append("; att: ").append(A.getAttackPower()).append("; health: ").append(A.getHealth()).append("; def: ").append(A.getDefensePower()).append("; exp: ").append(A.getExperience()).append("\n");
-            sb.append("2: ").append(B.getName()).append("; att: ").append(B.getAttackPower()).append("; health: ").append(B.getHealth()).append("; def: ").append(B.getDefensePower()).append("; exp: ").append(B.getExperience()).append("\n");
+            sb.append(context.getString(R.string.battle_stats, 1, A.getName(), A.getAttackPower(), A.getHealth(), A.getDefensePower(), A.getExperience()));
+            sb.append(context.getString(R.string.battle_stats, 2, B.getName(), B.getAttackPower(), B.getHealth(), B.getDefensePower(), B.getExperience()));
 
-            sb.append(A.getName()).append(" attacks ").append(B.getName()).append("\n");
+
+
+            sb.append(context.getString(R.string.battle_attacks, A.getName(), B.getName()));
             B.defense(A);
 
             if (B.getHealth() > 0) {
-                sb.append(B.getName()).append(" manages to escape death.\n\n");
+                sb.append(context.getString(R.string.battle_escapes, B.getName()));
 
                 //Change the roles of A and B
 
@@ -40,8 +44,8 @@ public class BattleField extends Storage{
                 B = temp;
             } else {
 
-                sb.append(B.getName()).append(" gets killed.\n");
-                sb.append("The battle is ovahh!\n");
+                sb.append(context.getString(R.string.battle_killed, B.getName()));
+                sb.append(context.getString(R.string.battle_over));
 
                 A.setExperience(A.getExperience() + 1);
 
