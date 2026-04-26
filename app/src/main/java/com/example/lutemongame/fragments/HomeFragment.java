@@ -16,8 +16,7 @@ import android.widget.Toast;
 
 import com.example.lutemongame.BattleField;
 import com.example.lutemongame.Home;
-import com.example.lutemongame.Lutemon;
-import com.example.lutemongame.MainActivity;
+import com.example.lutemongame.abstractclass.Lutemon;
 import com.example.lutemongame.R;
 import com.example.lutemongame.TrainingArea;
 

@@ -1,9 +1,8 @@
-package com.example.lutemongame;
+package com.example.lutemongame.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +10,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.HashMap;
+import com.example.lutemongame.BattleField;
+import com.example.lutemongame.Home;
+import com.example.lutemongame.R;
+import com.example.lutemongame.TrainingArea;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,6 +1,4 @@
-package com.example.lutemongame;
-
-import static com.example.lutemongame.BattleField.battleField;
+package com.example.lutemongame.activites;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +13,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.lutemongame.BattleField;
+import com.example.lutemongame.abstractclass.Lutemon;
+import com.example.lutemongame.R;
+
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class FightActivity extends AppCompatActivity {
@@ -42,11 +45,14 @@ public class FightActivity extends AppCompatActivity {
             Lutemon fighter2 = battleField.getLutemon(selectedIds.get(1));
 
             if (fighter1 != null && fighter2 != null) {
-                String battle = battleField.fight(fighter1, fighter2);
 
-                battleLog.setText(battle);
+                ArrayList<String> battleLogList = new ArrayList<>();
 
-                runBattleAnimation(fighter1, fighter2);
+                String battleResult = battleField.fight(this, fighter1, fighter2);
+
+                battleLog.setText("");
+
+                runBattleAnimation(fighter1, fighter2, battleResult);
 
                 //ScrollView to bottom
                 scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
@@ -71,31 +77,56 @@ public class FightActivity extends AppCompatActivity {
 
 
 
-    private void runBattleAnimation(Lutemon f1, Lutemon f2) {
+    private void runBattleAnimation(Lutemon f1, Lutemon f2, String fullLog) {
         Handler handler = new Handler();
-        int delay = 1000; // one second for each turn
 
         // Set pictures
         ivFighter1.setImageResource(f1.getImage());
         ivFighter2.setImageResource(f2.getImage());
 
-        // Animation
-        handler.postDelayed(() -> {
 
-            // Make explosion
-            showVisualEffect(ivFighter2, R.drawable.explosion);
+        //Split fight into lines
+        String[] log = fullLog.split("\n");
+        int delayPerLine = 800;
 
-        }, delay);
+        for (int i = 0; i < log.length; i++) {
+            final String line = log[i];
+            final int index = i;
 
-        handler.postDelayed(() -> {
-            if (f2.getHealth() <= 0) {
-                ivFighter2.setImageResource(f2.getImage());
-                showVisualEffect(ivFighter2, R.drawable.cross_mark); // Set cross mark
-                ivFighter2.setAlpha(0.5f);
-            }
-        }, delay * 2);
+
+            // Animation
+            handler.postDelayed(() -> {
+
+                battleLog.append(line + "\n");
+
+                ScrollView scrollView = findViewById(R.id.ScrollViewFight);
+                if (scrollView != null) {
+                    scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
+                }
+
+                // Make explosion
+                if (line.contains(f1.getName())) {
+                    showVisualEffect(ivFighter2, R.drawable.explosion);
+                }else if (line.contains(f2.getName())) {
+                    showVisualEffect(ivFighter1, R.drawable.explosion);
+
+                }
+
+                if (index == log.length - 1) {
+                    if (f1.getHealth() <= 0) {
+                        showVisualEffect(ivFighter1, R.drawable.cross_mark);
+                        ivFighter1.setAlpha(0.5f);
+                    } else if (f2.getHealth() <= 0) {
+                        showVisualEffect(ivFighter2, R.drawable.cross_mark);
+                        ivFighter2.setAlpha(0.5f);
+                    }
+                }
+
+            }, (long) i * delayPerLine);
+
+        }
     }
-    //AI HELP
+
 
     private void showVisualEffect(ImageView target, int drawableResId) {
         ImageView ivEffect = findViewById(R.id.ivEffect);

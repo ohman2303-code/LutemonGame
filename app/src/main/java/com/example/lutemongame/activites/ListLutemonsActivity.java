@@ -1,4 +1,4 @@
-package com.example.lutemongame;
+package com.example.lutemongame.activites;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +10,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.lutemongame.BattleField;
+import com.example.lutemongame.Home;
+import com.example.lutemongame.ListAdapter;
+import com.example.lutemongame.abstractclass.Lutemon;
+import com.example.lutemongame.R;
+import com.example.lutemongame.TrainingArea;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,5 @@
-package com.example.lutemongame;
+package com.example.lutemongame.activites;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.lutemongame.R;
+import com.example.lutemongame.TabAdapter;
 import com.example.lutemongame.fragments.BattleFieldFragment;
 import com.example.lutemongame.fragments.HomeFragment;
 import com.example.lutemongame.fragments.TrainFragment;

@@ -1,6 +1,9 @@
 package com.example.lutemongame;
 
-public class TrainingArea extends Storage{
+import com.example.lutemongame.abstractclass.Lutemon;
+import com.example.lutemongame.abstractclass.Storage;
+
+public class TrainingArea extends Storage {
 
     //create singleton
 

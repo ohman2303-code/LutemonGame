@@ -1,6 +1,5 @@
-package com.example.lutemongame;
+package com.example.lutemongame.activites;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,13 +7,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.lutemongame.Home;
+import com.example.lutemongame.abstractclass.Lutemon;
+import com.example.lutemongame.R;
+import com.example.lutemongame.colors.Black;
+import com.example.lutemongame.colors.Green;
+import com.example.lutemongame.colors.Orange;
+import com.example.lutemongame.colors.Turquoise;
+import com.example.lutemongame.colors.White;
 
 public class AddLutemonActivity extends AppCompatActivity {
 

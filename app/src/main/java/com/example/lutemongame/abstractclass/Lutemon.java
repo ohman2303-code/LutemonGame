@@ -1,4 +1,4 @@
-package com.example.lutemongame;
+package com.example.lutemongame.abstractclass;
 
 import java.io.Serializable;
 import java.util.Random;

@@ -1,6 +1,9 @@
 package com.example.lutemongame;
 
-public class Home extends Storage{
+import com.example.lutemongame.abstractclass.Lutemon;
+import com.example.lutemongame.abstractclass.Storage;
+
+public class Home extends Storage {
 
     //create singleton
     private static Home home = null;

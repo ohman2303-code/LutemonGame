@@ -2,7 +2,10 @@ package com.example.lutemongame;
 
 import android.content.Context;
 
-public class BattleField extends Storage{
+import com.example.lutemongame.abstractclass.Lutemon;
+import com.example.lutemongame.abstractclass.Storage;
+
+public class BattleField extends Storage {
 
     //create singleton
 

@@ -18,9 +18,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.lutemongame.BattleField;
-import com.example.lutemongame.FightActivity;
+import com.example.lutemongame.activites.FightActivity;
 import com.example.lutemongame.Home;
-import com.example.lutemongame.Lutemon;
+import com.example.lutemongame.abstractclass.Lutemon;
 import com.example.lutemongame.R;
 import com.example.lutemongame.TrainingArea;
 

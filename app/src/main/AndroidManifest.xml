@@ -12,22 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LutemonGame">
         <activity
-            android:name=".FightActivity"
+            android:name=".activites.FightActivity"
             android:exported="false" />
         <activity
-            android:name=".ListLutemonsActivity"
+            android:name=".activites.ListLutemonsActivity"
             android:exported="false" />
         <activity
-            android:name=".MoveLutemonsActivity"
+            android:name=".activites.MoveLutemonsActivity"
             android:exported="false" />
         <activity
             android:name=".FragmentsActivity"
             android:exported="false" />
         <activity
-            android:name=".AddLutemonActivity"
+            android:name=".activites.AddLutemonActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activites.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
