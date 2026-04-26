@@ -21,6 +21,7 @@ public class BattleField extends Storage{
         StringBuilder sb = new StringBuilder();
 
         while (A.getHealth() > 0 && B.getHealth() > 0) {
+
             //fightlog
 
             sb.append("1: ").append(A.getName()).append("; att: ").append(A.getAttackPower()).append("; health: ").append(A.getHealth()).append("; def: ").append(A.getDefensePower()).append("; exp: ").append(A.getExperience()).append("\n");
@@ -40,7 +41,7 @@ public class BattleField extends Storage{
             } else {
 
                 sb.append(B.getName()).append(" gets killed.\n");
-                sb.append("The battle is ovahh.\n");
+                sb.append("The battle is ovahh!\n");
 
                 A.setExperience(A.getExperience() + 1);
 

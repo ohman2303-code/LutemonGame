@@ -7,6 +7,33 @@
     android:layout_height="match_parent"
     tools:context=".FightActivity">
 
+    <ImageView
+        android:id="@+id/ivFighter1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivFighter2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintEnd_toStartOf="@+id/ivFighter1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivEffect"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        android:elevation="10dp"
+        app:layout_constraintTop_toTopOf="@+id/ivFighter1"
+        app:layout_constraintStart_toStartOf="@+id/ivFighter1"
+        app:layout_constraintBottom_toBottomOf="@+id/ivFighter1"
+        app:layout_constraintEnd_toEndOf="@+id/ivFighter1" />
+
     <Button
         android:id="@+id/btnReturnToBattleFieldFragment"
         android:layout_width="wrap_content"
