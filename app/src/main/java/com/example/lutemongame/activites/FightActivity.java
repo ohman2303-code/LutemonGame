@@ -16,8 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.lutemongame.BattleField;
 import com.example.lutemongame.abstractclass.Lutemon;
 import com.example.lutemongame.R;
-
-import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class FightActivity extends AppCompatActivity {
@@ -46,7 +44,6 @@ public class FightActivity extends AppCompatActivity {
 
             if (fighter1 != null && fighter2 != null) {
 
-                ArrayList<String> battleLogList = new ArrayList<>();
 
                 String battleResult = battleField.fight(this, fighter1, fighter2);
 
@@ -138,27 +135,12 @@ public class FightActivity extends AppCompatActivity {
             ivEffect.setY(target.getY());
 
             ivEffect.setVisibility(View.VISIBLE);
+
+            new android.os.Handler().postDelayed(() -> {
+                ivEffect.setVisibility(View.INVISIBLE);
+
+
+            }, 500);
         }
-
-        new android.os.Handler().postDelayed(() -> {
-            ivEffect.setVisibility(View.INVISIBLE);
-        }, 500);
     }
-
-    private void playExplosion(ImageView target) {
-        ImageView ivEffect = findViewById(R.id.ivEffect);
-        ivEffect.setImageResource(R.drawable.explosion); // Explosion
-
-        // Set the place of the effect
-        ivEffect.setX(target.getX());
-        ivEffect.setY(target.getY());
-
-        ivEffect.setVisibility(View.VISIBLE);
-
-        // Hide effect with delay
-        new android.os.Handler().postDelayed(() -> {
-            ivEffect.setVisibility(View.INVISIBLE);
-        }, 500);
-    }
-    //AI HELP
 }
