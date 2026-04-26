@@ -1,4 +1,4 @@
-package com.example.lutemongame.activites;
+package com.example.lutemongame.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,7 +55,7 @@ public class FightActivity extends AppCompatActivity {
                 scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
             }
         } else {
-            String mistake = "Virhe! Ei löytynyt lutemonia!";
+            String mistake = getString(R.string.error_no_lutemons_found);
             battleLog.setText(mistake);
 
         }

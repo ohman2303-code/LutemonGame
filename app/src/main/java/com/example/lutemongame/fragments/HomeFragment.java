@@ -103,10 +103,10 @@ public class HomeFragment extends Fragment {
             if (selectedLutemonId != -1) {
                 Lutemon chosenLutemonForHeal = home.getLutemon(selectedLutemonId);
                 home.healLutemon(chosenLutemonForHeal);
-                Toast.makeText(getContext(), chosenLutemonForHeal.getName() + " on parannettu!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.lutemon_healed, chosenLutemonForHeal.getName()), Toast.LENGTH_SHORT).show();
             }
             else {
-                Toast.makeText(getContext(), "Valitse ensin parannettava Lutemon!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.select_lutemon_for_healing), Toast.LENGTH_SHORT).show();
             }
             makeRadioButtons(view);
         });
@@ -120,7 +120,7 @@ public class HomeFragment extends Fragment {
             
             if (selectedLutemonId != -1){
                 if (rgId == -1) {
-                    Toast.makeText(getContext(), "Valitse kohde!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.select_target), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -137,7 +137,7 @@ public class HomeFragment extends Fragment {
                 makeRadioButtons(view);
                 ivHomeLutemonImage.setVisibility(View.INVISIBLE);
             } else {
-                Toast.makeText(getContext(), "Valitse siirrettävä Lutemon!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -153,7 +153,9 @@ public class HomeFragment extends Fragment {
         // Check what Lutemons are in Home
         for (Lutemon lutemon : home.getLutemons().values()) {
             RadioButton rb = new RadioButton(getContext());
-            rb.setText(lutemon.getName() + ", HP: " + lutemon.getHealth() + "/" + lutemon.getMaxHealth() +  " (" + lutemon.getColor() + ")");
+            String lutemonHealth = getString(R.string.hitpoints, lutemon.getHealth(), lutemon.getMaxHealth());
+            String lutemonColor = getString(R.string.lutemon_color, lutemon.getColorString(getContext()));
+            rb.setText(lutemon.getName() + " " + lutemonHealth + " " + lutemonColor);
 
             // Set the radiobutton id to Lutemons own id
             rb.setId(lutemon.getId());

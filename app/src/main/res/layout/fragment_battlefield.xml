@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#F44336"
-        android:text="Taisteluun"
+        android:text="@string/to_battle"
         android:translationX="150dp"
         android:translationY="475dp" />
 
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#F44336"
-        android:text="Siirrä valitut Lutemonit"
+        android:text="@string/move_lutemon"
         android:translationX="150dp"
         android:translationY="550dp" />
 
@@ -50,13 +50,13 @@
             android:id="@+id/rbHomeFromBattleField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kotiin" />
+            android:text="@string/home_radiobutton" />
 
         <RadioButton
             android:id="@+id/rbTrainingAreaFromBattleField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Treeniin" />
+            android:text="@string/trainingArea_radiobutton" />" />
 
     </RadioGroup>
 

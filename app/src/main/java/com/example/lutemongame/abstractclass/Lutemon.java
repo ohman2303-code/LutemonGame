@@ -1,5 +1,9 @@
 package com.example.lutemongame.abstractclass;
 
+import android.content.Context;
+
+import com.example.lutemongame.R;
+
 import java.io.Serializable;
 import java.util.Random;
 
@@ -10,7 +14,7 @@ public abstract class Lutemon implements Serializable {
     protected static int idCounter = 0;
 
     protected String name;
-    protected String color;
+    protected int color;
     protected int attackPower;
     protected int defensePower;
 
@@ -22,11 +26,14 @@ public abstract class Lutemon implements Serializable {
         this.name = name;
     }
 
-    public String getColor() {
+    public int getColor() {
         return color;
     }
+    public String getColorString(Context context){
+        return context.getString(this.color);
+    }
 
-    public void setColor(String color) {
+    public void setColor(int color) {
         this.color = color;
     }
 
@@ -98,7 +105,7 @@ public abstract class Lutemon implements Serializable {
     protected int id;
     protected int image;
 
-    public Lutemon(String name, String color, int attackPower, int defensePower, int experience, int health, int maxHealth, int id, int image) {
+    public Lutemon(String name, int color, int attackPower, int defensePower, int experience, int health, int maxHealth, int id, int image) {
         this.name = name;
         this.color = color;
         this.attackPower = attackPower;

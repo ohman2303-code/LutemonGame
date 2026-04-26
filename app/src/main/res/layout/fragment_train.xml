@@ -23,13 +23,13 @@
             android:id="@+id/rbHomeFromTrainingArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kotiin" />
+            android:text="@string/home_radiobutton" />
 
         <RadioButton
             android:id="@+id/rbBattleFieldFromTrainingArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Taisteluun" />
+            android:text="@string/battleField_radiobutton" />
     </RadioGroup>
 
     <Button
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#F44336"
-        android:text="Treenaa valittua Lutemonia!"
+        android:text="@string/trained_lutemon"
         android:translationX="150dp"
         android:translationY="475dp" />
 
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#F44336"
-        android:text="Siirrä valitut Lutemonit!"
+        android:text="@string/move_lutemon"
         android:translationX="150dp"
         android:translationY="550dp" />
 
@@ -54,7 +54,6 @@
         android:id="@+id/txtPointsUntilLvlUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="x pistettä seuraavaan tasoon"
         android:translationX="150dp"
         android:translationY="300dp" />
 

@@ -1,4 +1,4 @@
-package com.example.lutemongame.activites;
+package com.example.lutemongame.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

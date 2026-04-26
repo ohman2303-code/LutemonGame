@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#00BCD4"
-    tools:context=".activites.MainActivity">
+    tools:context=".activities.MainActivity">
 
     <TextView
         android:id="@+id/LutemonFighter"
@@ -39,7 +39,7 @@
         android:layout_marginTop="64dp"
         android:backgroundTint="#F44336"
         android:onClick="switchToAddLutemonActivity"
-        android:text="Lisää Lutemon"
+        android:text="@string/add_lutemon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LutemonFighter" />
@@ -51,7 +51,7 @@
         android:layout_marginTop="32dp"
         android:backgroundTint="#F44336"
         android:onClick="switchToListLutemonsActivity"
-        android:text="Listaa Lutemonit"
+        android:text="@string/list_lutemons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GoToAddLutemon" />
@@ -63,7 +63,7 @@
         android:layout_marginTop="32dp"
         android:backgroundTint="#F44336"
         android:onClick="switchToMoveLutemonsActivity"
-        android:text="Siirrä Lutemon"
+        android:text="@string/move_lutemons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GoToListLutemons" />
@@ -96,7 +96,7 @@
         android:layout_marginTop="32dp"
         android:backgroundTint="#F44336"
         android:onClick="saveAllLutemons"
-        android:text="Tallenna Lutemonit"
+        android:text="@string/save_lutemons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
         android:layout_marginTop="24dp"
         android:backgroundTint="#F44336"
         android:onClick="loadAllLutemons"
-        android:text="Lataa Lutemonit"
+        android:text="@string/load_lutemons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"

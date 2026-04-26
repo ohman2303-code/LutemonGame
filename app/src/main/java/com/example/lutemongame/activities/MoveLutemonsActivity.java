@@ -1,4 +1,4 @@
-package com.example.lutemongame.activites;
+package com.example.lutemongame.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -56,13 +56,13 @@ public class MoveLutemonsActivity extends AppCompatActivity {
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
                 case 0:
-                    tab.setText("Koti");
+                    tab.setText(getString(R.string.Home));
                     break;
                 case 1:
-                    tab.setText("Treeni");
+                    tab.setText(getString(R.string.TrainingArea));
                     break;
                 case 2:
-                    tab.setText("Taistelu");
+                    tab.setText(getString(R.string.BattleField));
                     break;
             }
         }).attach(); // AI HELP

@@ -1,11 +1,10 @@
-package com.example.lutemongame.activites;
+package com.example.lutemongame.activities;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.activity.EdgeToEdge;
@@ -61,43 +60,34 @@ public class AddLutemonActivity extends AppCompatActivity {
         });
 
         //Setting listener
+        // AddLutemonActivity.java
         addButton.setOnClickListener(view -> {
+            String lutemonName = lutemonNameInput.getText().toString();
+            int selectedId = colorGroup.getCheckedRadioButtonId();
 
-                    String lutemonName = lutemonNameInput.getText().toString();
+            if (lutemonName.isEmpty() || selectedId == -1) return;
 
-                    int selectedId = colorGroup.getCheckedRadioButtonId();
-                    RadioButton selectedButton = findViewById(selectedId);
-                    String color = selectedButton.getText().toString();
+            Lutemon newLutemon = null;
 
-                    Lutemon newLutemon = null;
+            if (selectedId == R.id.WhiteButton) {
+                newLutemon = new White(lutemonName);
+            } else if (selectedId == R.id.BlackButton) {
+                newLutemon = new Black(lutemonName);
+            } else if (selectedId == R.id.GreenButton) {
+                newLutemon = new Green(lutemonName);
+            } else if (selectedId == R.id.TurqoiseButton) {
+                newLutemon = new Turquoise(lutemonName);
+            } else if (selectedId == R.id.OrangeButton) {
+                newLutemon = new Orange(lutemonName);
+            }
 
-                    //create Lutemon based on color
-
-                    switch(color){
-                        case "Valkoinen":
-                            newLutemon = new White(lutemonName);
-                            break;
-                        case "Musta":
-                            newLutemon = new Black(lutemonName);
-                            break;
-                        case "Vihreä":
-                            newLutemon = new Green(lutemonName);
-                            break;
-                        case "Turkoosi":
-                            newLutemon = new Turquoise(lutemonName);
-                            break;
-                        case "Oranssi":
-                            newLutemon = new Orange(lutemonName);
-                            break;
-                    }
-
-                    if(newLutemon != null){
-                        Home.getInstance().addLutemon(newLutemon);
-
-                        lutemonNameInput.setText("");
-
-                    }
-                });
+            if(newLutemon != null){
+                Home.getInstance().addLutemon(newLutemon);
+                lutemonNameInput.setText("");
+                colorGroup.clearCheck();
+                lutemonImage.setVisibility(View.GONE);
+            }
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

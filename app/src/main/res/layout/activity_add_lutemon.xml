@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activites.AddLutemonActivity">
+    tools:context=".activities.AddLutemonActivity">
 
     <Button
         android:id="@+id/AddLutemonButton"
@@ -14,7 +14,7 @@
         android:layout_marginTop="24dp"
         android:backgroundTint="#F44336"
         android:shadowColor="#3F51B5"
-        android:text="Lisää Lutemon"
+        android:text="@string/add_lutemon"
         android:textColorHighlight="#E91E63"
         android:textColorHint="#E91E63"
         android:textColorLink="#673AB7"
@@ -38,31 +38,31 @@
             android:id="@+id/BlackButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Musta" />
+            android:text="@string/color_black" />
 
         <RadioButton
             android:id="@+id/GreenButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vihreä" />
+            android:text="@string/color_green" />
 
         <RadioButton
             android:id="@+id/WhiteButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Valkoinen" />
+            android:text="@string/color_white" />
 
         <RadioButton
             android:id="@+id/TurqoiseButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Turkoosi" />
+            android:text="@string/color_turquoise"/>
 
         <RadioButton
             android:id="@+id/OrangeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Oranssi" />
+            android:text="@string/color_orange" />
     </RadioGroup>
 
     <EditText
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
         android:ems="10"
-        android:hint="Lutemonin nimi"
+        android:hint="@string/lutemon_name_hint"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         android:layout_marginTop="32dp"
         android:backgroundTint="#F44336"
         android:onClick="switchToMain"
-        android:text="Palaa"
+        android:text="@string/back_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddLutemonButton" />

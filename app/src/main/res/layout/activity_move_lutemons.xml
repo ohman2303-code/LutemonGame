@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activites.MoveLutemonsActivity">
+    tools:context=".activities.MoveLutemonsActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -37,7 +37,7 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="#F44336"
         android:onClick="switchToMain"
-        android:text="Takaisin"
+        android:text="@string/back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"

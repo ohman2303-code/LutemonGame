@@ -89,7 +89,7 @@ public class TrainFragment extends Fragment {
             ivTrainLutemonImage.setVisibility(View.GONE);
         }
 
-        txtPointsUntilLvlUp.setText("Valitse Lutemon treenattavaksi");
+        txtPointsUntilLvlUp.setText(getString(R.string.select_lutemon_for_training));
 
         // Reset the clickounter when a new Lutemon is selected
         rgTrainLutemons.setOnCheckedChangeListener((group, checkedId) -> { // AI HELP
@@ -113,7 +113,7 @@ public class TrainFragment extends Fragment {
                 Lutemon chosenLutemon = trainingArea.getLutemon(selectedLutemonId);
                 
                 if (chosenLutemon.getExperience() >= 10) {
-                    txtPointsUntilLvlUp.setText("Maksimitaso 10 saavutettu!");
+                    txtPointsUntilLvlUp.setText(getString(R.string.maximum_level_reached));
                     return;
                 }
 
@@ -121,11 +121,11 @@ public class TrainFragment extends Fragment {
                 if (clickCounter >= 25) {
                     trainingArea.train(chosenLutemon);
                     clickCounter = 0;
-                    Toast.makeText(getContext(), chosenLutemon.getName() + " nousi seuraavalle tasolle!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.lutemon_reached_next_level), Toast.LENGTH_SHORT).show();
                 }
                 updateTrainingStatus(txtPointsUntilLvlUp, selectedLutemonId);
             } else {
-                Toast.makeText(getContext(), "Valitse ensin Lutemon!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.select_lutemon_for_training), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -136,7 +136,7 @@ public class TrainFragment extends Fragment {
             
             if (selectedLutemonId != -1){
                 if (rgId == -1) {
-                    Toast.makeText(getContext(), "Valitse kohde!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.select_lutemon_for_training), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -152,10 +152,10 @@ public class TrainFragment extends Fragment {
                 
                 makeRadioButtons(view);
                 if (ivTrainLutemonImage != null) ivTrainLutemonImage.setVisibility(View.GONE);
-                txtPointsUntilLvlUp.setText("Valitse Lutemon treenattavaksi");
+                txtPointsUntilLvlUp.setText(getString(R.string.select_lutemon_for_training));
                 clickCounter = 0;
             } else {
-                Toast.makeText(getContext(), "Valitse siirrettävä Lutemon!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -167,7 +167,7 @@ public class TrainFragment extends Fragment {
         Lutemon lutemon = TrainingArea.getInstance().getLutemon(lutemonId);
         if (lutemon != null) {
             int remaining = 25 - clickCounter;
-            textView.setText(remaining + " klikkausta seuraavaan tasoon.\nNykyinen taso: " + lutemon.getExperience() + "/10");
+            textView.setText(getString(R.string.clicks_until_next_level, remaining, lutemon.getExperience()));
         }
     }
 
@@ -180,7 +180,9 @@ public class TrainFragment extends Fragment {
         rgTrainLutemons.removeAllViews();
         for (Lutemon lutemon : trainingArea.getLutemons().values()) {
             RadioButton rb = new RadioButton(getContext());
-            rb.setText(lutemon.getName() + ", HP: " + lutemon.getHealth() + "/" + lutemon.getMaxHealth() +  " (" + lutemon.getColor() + ")");
+            String lutemonHealth = getString(R.string.hitpoints, lutemon.getHealth(), lutemon.getMaxHealth());
+            String lutemonColor = getString(R.string.lutemon_color, lutemon.getColorString(getContext()));
+            rb.setText(lutemon.getName() + " " + lutemonHealth + " " + lutemonColor);
             rb.setId(lutemon.getId());
             rgTrainLutemons.addView(rb);
         }

@@ -18,7 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.lutemongame.BattleField;
-import com.example.lutemongame.activites.FightActivity;
+import com.example.lutemongame.activities.FightActivity;
 import com.example.lutemongame.Home;
 import com.example.lutemongame.abstractclass.Lutemon;
 import com.example.lutemongame.R;
@@ -132,7 +132,7 @@ public class BattleFieldFragment extends Fragment {
                 } else if (rgId == R.id.rbTrainingAreaFromBattleField){
                     battleField.moveLutemon(chosenLutemon, TrainingArea.getInstance());
                 } else{
-                    Toast.makeText(getContext(), "Valitse kohde!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.select_target), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 
@@ -140,7 +140,7 @@ public class BattleFieldFragment extends Fragment {
                 updateLutemonLists(view);
                 ivBattleFieldLutemonImage.setVisibility(View.INVISIBLE);
             } else{
-                Toast.makeText(getContext(), "Valitse siirrettävä Lutemon!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -161,7 +161,9 @@ public class BattleFieldFragment extends Fragment {
 
         for (Lutemon lutemon : battleField.getLutemons().values()) {
             RadioButton rb = new RadioButton(getContext());
-            rb.setText(lutemon.getName() + ", HP: " + lutemon.getHealth() + "/" + lutemon.getMaxHealth() +  " (" + lutemon.getColor() + ")");
+            String lutemonHealth = getString(R.string.hitpoints, lutemon.getHealth(), lutemon.getMaxHealth());
+            String lutemonColor = getString(R.string.lutemon_color, lutemon.getColorString(getContext()));
+            rb.setText(lutemon.getName() + " " + lutemonHealth + " " + lutemonColor);
             rb.setId(lutemon.getId());
             rgBattleFieldLutemons.addView(rb);
         }
@@ -176,7 +178,8 @@ public class BattleFieldFragment extends Fragment {
 
         for (Lutemon lutemon : battleField.getLutemons().values()) {
             CheckBox cb = new CheckBox(getContext());
-            cb.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
+            String lutemonColor = getString(R.string.lutemon_color, lutemon.getColorString(getContext()));
+            cb.setText(lutemon.getName() + " " + lutemonColor);
             cb.setId(lutemon.getId());
             llLutemonsForBattle.addView(cb);
         }
@@ -201,7 +204,7 @@ public class BattleFieldFragment extends Fragment {
             intent.putIntegerArrayListExtra("selectedLutemonIds", selectedLutemonIds);
             startActivity(intent);
         } else {
-            Toast.makeText(getContext(), "Valitse tasan kaksi Lutemonia taisteluun!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.select_only_two_lutemons), Toast.LENGTH_SHORT).show();
         }
     }
     @Override
