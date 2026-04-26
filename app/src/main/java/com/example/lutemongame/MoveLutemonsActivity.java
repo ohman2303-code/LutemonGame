@@ -50,7 +50,7 @@ public class MoveLutemonsActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
+        }); // AI HELP
 
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
@@ -64,13 +64,13 @@ public class MoveLutemonsActivity extends AppCompatActivity {
                     tab.setText("Taistelu");
                     break;
             }
-        }).attach();
+        }).attach(); // AI HELP
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-        });
+        }); // AI HELP
 
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -101,7 +101,7 @@ public class MoveLutemonsActivity extends AppCompatActivity {
                 }
             }
         });
-    }
+    } // AI HELP
 
     public void switchToMain(View view){
         finish();

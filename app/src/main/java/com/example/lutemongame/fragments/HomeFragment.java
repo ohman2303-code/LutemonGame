@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
         ivHomeLutemonImage.setVisibility(View.GONE);
 
         // Update the photo when the Lutemon is chosen
-        rgHomeLutemons.setOnCheckedChangeListener((group, checkedId) -> {
+        rgHomeLutemons.setOnCheckedChangeListener((group, checkedId) -> { // AI HELP
             if (checkedId != -1) {
                 Lutemon chosenLutemon = home.getLutemon(checkedId);
                 if (chosenLutemon != null) {
@@ -99,7 +99,6 @@ public class HomeFragment extends Fragment {
         });
 
         //Here we heal the chosen Lutemon
-
         healLutemonButton.setOnClickListener(View -> {
             int selectedLutemonId = rgHomeLutemons.getCheckedRadioButtonId();
             if (selectedLutemonId != -1) {
@@ -170,5 +169,5 @@ public class HomeFragment extends Fragment {
         if (getView() != null) {
             makeRadioButtons(getView());
         }
-    }
+    } // AI HELP
 }

@@ -41,7 +41,7 @@ public abstract class Storage {
             for (Integer id : lutemons.keySet()) {
                 if (id >= Lutemon.getIdCounter())
                     Lutemon.setIdCounter(id + 1);
-            }
+            } // AI HELP
         } catch (IOException | ClassNotFoundException e) {
         }
     }

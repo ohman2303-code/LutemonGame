@@ -92,7 +92,7 @@ public class TrainFragment extends Fragment {
         txtPointsUntilLvlUp.setText("Valitse Lutemon treenattavaksi");
 
         // Reset the clickounter when a new Lutemon is selected
-        rgTrainLutemons.setOnCheckedChangeListener((group, checkedId) -> {
+        rgTrainLutemons.setOnCheckedChangeListener((group, checkedId) -> { // AI HELP
             clickCounter = 0;
             updateTrainingStatus(txtPointsUntilLvlUp, checkedId);
             if (checkedId != -1 && ivTrainLutemonImage != null) {
@@ -130,7 +130,6 @@ public class TrainFragment extends Fragment {
         });
 
         // Here is the mechanic for moving Lutemons from TrainingArea to Home or BattleField
-
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemons.getCheckedRadioButtonId();
@@ -192,7 +191,7 @@ public class TrainFragment extends Fragment {
         super.onResume();
         if (getView() != null) {
             makeRadioButtons(getView());
-        }
+        } // AI HELP
     }
 
 }

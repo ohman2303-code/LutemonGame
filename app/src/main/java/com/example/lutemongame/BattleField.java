@@ -48,5 +48,5 @@ public class BattleField extends Storage{
                 break;
         }
     }
-        return sb.toString();}
+        return sb.toString();} // AI HELP
 }

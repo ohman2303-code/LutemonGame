@@ -146,12 +146,12 @@ public class BattleFieldFragment extends Fragment {
 
         return view;
     }
-
+// Update both lists of Lutemons
     private void updateLutemonLists(View view) {
         makeRadioButtons(view);
         makeCheckBoxes(view);
     }
-
+// Create the radiobuttons of Lutemons in BattleField
     public void makeRadioButtons(View view) {
         RadioGroup rgBattleFieldLutemons = view.findViewById(R.id.rgBattleFieldLutemons);
         BattleField battleField = BattleField.getInstance();
@@ -166,7 +166,7 @@ public class BattleFieldFragment extends Fragment {
             rgBattleFieldLutemons.addView(rb);
         }
     }
-
+// Create the checkboxes of Lutemons for choosing them for fighting
     public void makeCheckBoxes(View view) {
         LinearLayout llLutemonsForBattle = view.findViewById(R.id.llLutemonsForBattle);
         BattleField battleField = BattleField.getInstance();
@@ -181,7 +181,7 @@ public class BattleFieldFragment extends Fragment {
             llLutemonsForBattle.addView(cb);
         }
     }
-
+// Switch to FightActivity and make sure that there are exactly two Lutemons selected
     public void switchToFightActivity(View view){
         ArrayList<Integer> selectedLutemonIds = new ArrayList<>();
         LinearLayout llLutemonsForBattle = view.findViewById(R.id.llLutemonsForBattle);
@@ -194,7 +194,7 @@ public class BattleFieldFragment extends Fragment {
                     selectedLutemonIds.add(cb.getId());
                 }
             }
-        }
+        } // AI HELP
 
         if (selectedLutemonIds.size() == 2) {
             Intent intent = new Intent(getActivity(), FightActivity.class);
@@ -210,5 +210,5 @@ public class BattleFieldFragment extends Fragment {
         if (getView() != null) {
             updateLutemonLists(getView());
         }
-    }
+    } // AI HELP
 }

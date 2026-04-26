@@ -55,7 +55,7 @@ public class FightActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
+    } // AI HELP
     public void returnToBattleFieldFragment(View view){
         finish();
     }
