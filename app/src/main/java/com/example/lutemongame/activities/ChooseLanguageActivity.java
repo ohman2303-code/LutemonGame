@@ -20,6 +20,7 @@ public class ChooseLanguageActivity extends AppCompatActivity {
         String lang = LocaleHelper.getLanguage(newBase);
         super.attachBaseContext(LocaleHelper.updateResources(newBase, lang));
     } //AI HELP
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
