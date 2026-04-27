@@ -17,6 +17,11 @@ public abstract class Lutemon implements Serializable {
     protected int color;
     protected int attackPower;
     protected int defensePower;
+    protected int experience;
+    protected int health;
+    protected int maxHealth;
+    protected int id;
+    protected int image;
 
     public String getName() {
         return name;
@@ -99,11 +104,7 @@ public abstract class Lutemon implements Serializable {
         idCounter = counter;
     }
 
-    protected int experience;
-    protected int health;
-    protected int maxHealth;
-    protected int id;
-    protected int image;
+
 
     public Lutemon(String name, int color, int attackPower, int defensePower, int experience, int health, int maxHealth, int id, int image) {
         this.name = name;
@@ -118,7 +119,6 @@ public abstract class Lutemon implements Serializable {
     }
 
     //Damage is random
-
     public void defense(Lutemon enemy){
 
         int damage = enemy.getAttackPower() - this.defensePower + random.nextInt(5);

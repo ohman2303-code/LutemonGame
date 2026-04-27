@@ -21,9 +21,6 @@ public abstract class Storage {
     public HashMap<Integer, Lutemon> getLutemons() {
         return lutemons;
     }
-    public void listLutemons(){
-
-    }
     public void saveLutemons(Context context) {
         try {
         ObjectOutputStream out = new ObjectOutputStream(context.openFileOutput(name + ".data", Context.MODE_PRIVATE));
