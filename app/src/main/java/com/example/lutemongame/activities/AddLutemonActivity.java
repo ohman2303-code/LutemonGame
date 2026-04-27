@@ -1,11 +1,13 @@
 package com.example.lutemongame.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lutemongame.Home;
+import com.example.lutemongame.LocaleHelper;
 import com.example.lutemongame.abstractclass.Lutemon;
 import com.example.lutemongame.R;
 import com.example.lutemongame.colors.Black;
@@ -26,9 +29,15 @@ public class AddLutemonActivity extends AppCompatActivity {
 
     EditText lutemonNameInput;
     ImageView lutemonImage;
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        String lang = LocaleHelper.getLanguage(newBase);
+        super.attachBaseContext(LocaleHelper.updateResources(newBase, lang));
+    } //AI HELP
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_lutemon);
@@ -60,13 +69,18 @@ public class AddLutemonActivity extends AppCompatActivity {
         });
 
         //Setting listener
-        // AddLutemonActivity.java
         addButton.setOnClickListener(view -> {
             String lutemonName = lutemonNameInput.getText().toString();
             int selectedId = colorGroup.getCheckedRadioButtonId();
 
-            if (lutemonName.isEmpty() || selectedId == -1) return;
-
+            if (lutemonName.isEmpty()) {
+                Toast.makeText(this, getString(R.string.provide_name), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (selectedId == -1){
+                Toast.makeText(this, getString(R.string.choose_color), Toast.LENGTH_SHORT).show();
+                return;
+            }
             Lutemon newLutemon = null;
 
             if (selectedId == R.id.WhiteButton) {
@@ -100,3 +114,4 @@ public class AddLutemonActivity extends AppCompatActivity {
         finish();
     }
 }
+

@@ -1,5 +1,6 @@
 package com.example.lutemongame.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lutemongame.BattleField;
+import com.example.lutemongame.LocaleHelper;
 import com.example.lutemongame.abstractclass.Lutemon;
 import com.example.lutemongame.R;
 import java.util.ArrayList;
@@ -22,6 +24,11 @@ public class FightActivity extends AppCompatActivity {
 
     private ImageView ivFighter1, ivFighter2;
     private TextView battleLog;
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        String lang = LocaleHelper.getLanguage(newBase);
+        super.attachBaseContext(LocaleHelper.updateResources(newBase, lang));
+    } //AI HELP
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

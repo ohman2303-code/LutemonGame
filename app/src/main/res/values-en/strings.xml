@@ -1,39 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    //Select strings
-    <string name="select_target">Choose target!</string>
-    <string name="select_moving_lutemon">Choose Lutemon to be moved!</string>
-    <string name="select_only_two_lutemons">Choose exactly two Lutemons for battle!</string>
-    <string name="select_lutemon_for_healing">Choose Lutemon to be healed first!</string>
-    <string name="select_lutemon_for_training">Choose Lutemon to be trained!</string>
-    //Lutemon
-    <string name="hitpoints">HP: %1$d/%2$d</string>
+    <string name="app_name">LutemonGame</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Select strings-->
+    <string name="select_target">Select target!</string>
+    <string name="select_lutemon_and_target">Select Lutemon and target!</string>
+    <string name="select_moving_lutemon">Select Lutemon to move!</string>
+    <string name="select_only_two_lutemons">Select exactly two Lutemons for battle!</string>
+    <string name="select_lutemon_for_healing">Select Lutemon to heal first!</string>
+    <string name="select_lutemon_for_training">Select Lutemon to train!</string>
+    <!--Lutemon-->
+    <string name="hitpoints">Health: %1$d/%2$d</string>
     <string name="attack">Attack: %1$d</string>
-    <string name="defence">Defence: %1$d</string>
+    <string name="defence">Defense: %1$d</string>
     <string name="experience">Experience: %1$d</string>
     <string name="lutemon_color">(%1$s)</string>
     <string name="lutemon_healed">%1$s has been healed!</string>
+    <string name="lutemon_moved">%1$s has been moved!</string>
+    <string name="maximum_hp">%1$s is already full hp</string>
     <string name="maximum_level_reached">Maximum level reached!</string>
     <string name="lutemon_reached_next_level">Next level reached!</string>
     <string name="clicks_until_next_level">%1$d clicks until next level. \nCurrent level (%2$d/10)</string>
-    //Colors
+    <string name="provide_name">Provide name!</string>
+    <string name="choose_color">Choose color!</string>
+    <!--Colors-->
     <string name="color_white">White</string>
     <string name="color_black">Black</string>
     <string name="color_green">Green</string>
     <string name="color_turquoise">Turquoise</string>
     <string name="color_orange">Orange</string>
-    //Battle strings
-    <string name="battle_stats">%1$d: %2$s; ATT: %3$d; HP: %4$d; DEF: %5$d; EXP: %6$d\n</string>
+    <!--Battle strings-->
+    <string name="battle_stats">%1$d: %2$s; ATK: %3$d; HP: %4$d; DEF: %5$d; EXP: %6$d\n</string>
     <string name="battle_attacks">%1$s attacks %2$s\n</string>
-    <string name="battle_escapes">%1$s escapes.\n\n</string>
-    <string name="battle_killed">%1$s dies.\n</string>
+    <string name="battle_escapes">%1$s barely survives.\n\n</string>
+    <string name="battle_killed">%1$s is killed.\n</string>
     <string name="battle_over">The battle is over!\n</string>
-    //Error strings
-    <string name="error_no_lutemons_found">Error! No Lutemons found!</string>
-    //Storage names
+    <!--Error strings-->
+    <string name="error_no_lutemons_found">Error! No Lutemon found!</string>
+    <!--Storage names-->
     <string name="Home">Home</string>
-    <string name="TrainingArea">Train</string>
-    <string name="BattleField">Fight</string>
-
-
+    <string name="TrainingArea">Training Area</string>
+    <string name="BattleField">Battle Field</string>
+    <!--Button strings-->
+    <string name="add_lutemon">Add Lutemon</string>
+    <string name="lutemon_name_hint">Lutemon\'s name</string>
+    <string name="back_button">Back</string>
+    <string name="list_lutemons">List Lutemons</string>
+    <string name="move_lutemons">Move Lutemons</string>
+    <string name="save_lutemons">Save Lutemons</string>
+    <string name="load_lutemons">Load Lutemons</string>
+    <string name="to_battle">To Battle</string>
+    <string name="move_lutemon">Move selected Lutemon</string>
+    <string name="heal_lutemon">Heal selected Lutemon</string>
+    <string name="trained_lutemon">Train selected Lutemon</string>
+    <string name="loaded">Lutemons loaded</string>
+    <string name="saved">Lutemons saved</string>
+    <string name="change_language">Change language</string>
+    <!--Radiobutton strings-->
+    <string name="home_radiobutton">Home</string>
+    <string name="trainingArea_radiobutton">Training Area</string>
+    <string name="battleField_radiobutton">Battle Field</string>
 </resources>

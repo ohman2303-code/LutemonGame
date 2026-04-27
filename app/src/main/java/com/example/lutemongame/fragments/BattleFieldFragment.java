@@ -123,27 +123,39 @@ public class BattleFieldFragment extends Fragment {
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgBattleFieldLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseTarget.getCheckedRadioButtonId();
-            
-            if (selectedLutemonId != -1){
-                Lutemon chosenLutemon = battleField.getLutemon(selectedLutemonId);
 
-                if (rgId == R.id.rbHomeFromBattleField){
-                    battleField.moveLutemon(chosenLutemon, Home.getInstance());
-                } else if (rgId == R.id.rbTrainingAreaFromBattleField){
-                    battleField.moveLutemon(chosenLutemon, TrainingArea.getInstance());
-                } else{
-                    Toast.makeText(getContext(), getString(R.string.select_target), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                
-                // Refresh both lists and the picture after moving
-                updateLutemonLists(view);
-                ivBattleFieldLutemonImage.setVisibility(View.INVISIBLE);
-            } else{
-                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
+            if (selectedLutemonId == -1 && rgId == -1) {
+                Toast.makeText(getContext(), getString(R.string.select_lutemon_and_target), Toast.LENGTH_SHORT).show();
+                return;
             }
-        });
+            if (selectedLutemonId == -1) {
+                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
+                return;
+            }
 
+            if (rgId == -1) {
+                Toast.makeText(getContext(), getString(R.string.select_target), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Lutemon chosenLutemon = battleField.getLutemon(selectedLutemonId);
+            if (chosenLutemon == null) {
+                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String lutemonName = chosenLutemon.getName();
+            if (rgId == R.id.rbTrainingAreaFromBattleField){
+                //Here we move lutemons to trainingarea
+                battleField.moveLutemon(chosenLutemon, TrainingArea.getInstance());
+            } else if (rgId == R.id.rbHomeFromBattleField){
+                //Here we move lutemons to home
+                battleField.moveLutemon(chosenLutemon, Home.getInstance());
+            }
+
+            updateLutemonLists(getView());
+            ivBattleFieldLutemonImage.setVisibility(View.INVISIBLE);
+            Toast.makeText(getContext(), getString(R.string.lutemon_moved, lutemonName), Toast.LENGTH_SHORT).show();
+        });
         return view;
     }
 // Update both lists of Lutemons

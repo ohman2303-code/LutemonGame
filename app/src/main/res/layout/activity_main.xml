@@ -115,6 +115,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSaveLutemons" />
 
+    <Button
+        android:id="@+id/btnChangeLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="156dp"
+        android:backgroundTint="#F44336"
+        android:text="@string/change_language"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnLoadLutemons"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toStartOf="@+id/btnLoadLutemons"
+        app:layout_constraintTop_toBottomOf="@+id/btnLoadLutemons"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="202dp"

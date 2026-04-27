@@ -133,30 +133,41 @@ public class TrainFragment extends Fragment {
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgTrainLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemons.getCheckedRadioButtonId();
-            
-            if (selectedLutemonId != -1){
-                if (rgId == -1) {
-                    Toast.makeText(getContext(), getString(R.string.select_lutemon_for_training), Toast.LENGTH_SHORT).show();
-                    return;
-                }
+
+            if (selectedLutemonId == -1 && rgId == -1) {
+                Toast.makeText(getContext(), getString(R.string.select_lutemon_and_target), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (selectedLutemonId == -1) {
+                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (rgId == -1) {
+                Toast.makeText(getContext(), getString(R.string.select_target), Toast.LENGTH_SHORT).show();
+                return;
+            }
 
                 Lutemon chosenLutemon = trainingArea.getLutemon(selectedLutemonId);
-
-                if (rgId == R.id.rbHomeFromTrainingArea){
-                    // Here we move Lutemon to Home
-                    trainingArea.moveLutemon(chosenLutemon, Home.getInstance());
-                } else if (rgId == R.id.rbBattleFieldFromTrainingArea){
-                    // Here we move Lutemon to BattleField
-                    trainingArea.moveLutemon(chosenLutemon, BattleField.getInstance());
-                }
-                
-                makeRadioButtons(view);
-                if (ivTrainLutemonImage != null) ivTrainLutemonImage.setVisibility(View.GONE);
-                txtPointsUntilLvlUp.setText(getString(R.string.select_lutemon_for_training));
-                clickCounter = 0;
-            } else {
+            if (chosenLutemon == null) {
                 Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
+                return;
             }
+            String lutemonName = chosenLutemon.getName();
+            if (rgId == R.id.rbHomeFromTrainingArea){
+                // Here we move Lutemon to Home
+                trainingArea.moveLutemon(chosenLutemon, Home.getInstance());
+            } else if (rgId == R.id.rbBattleFieldFromTrainingArea){
+                // Here we move Lutemon to BattleField
+                trainingArea.moveLutemon(chosenLutemon, BattleField.getInstance());
+            }
+                
+            makeRadioButtons(getView());
+            if (ivTrainLutemonImage != null) ivTrainLutemonImage.setVisibility(View.GONE);
+            Toast.makeText(getContext(), getString(R.string.lutemon_moved, lutemonName), Toast.LENGTH_SHORT).show();
+            txtPointsUntilLvlUp.setText(getString(R.string.select_lutemon_for_training));
+            clickCounter = 0;
         });
 
         return view;
@@ -168,6 +179,8 @@ public class TrainFragment extends Fragment {
         if (lutemon != null) {
             int remaining = 25 - clickCounter;
             textView.setText(getString(R.string.clicks_until_next_level, remaining, lutemon.getExperience()));
+        } else{
+            textView.setText(getString(R.string.select_lutemon_for_training));
         }
     }
 
@@ -193,6 +206,17 @@ public class TrainFragment extends Fragment {
         super.onResume();
         if (getView() != null) {
             makeRadioButtons(getView());
+            clickCounter = 0;
+            TextView txtPointsUntilLvlUp = getView().findViewById(R.id.txtPointsUntilLvlUp);
+            if (txtPointsUntilLvlUp != null) {
+                txtPointsUntilLvlUp.setText(getString(R.string.select_lutemon_for_training));
+            }
+
+            ImageView ivTrainLutemonImage = getView().findViewById(R.id.ivTrainLutemonImage);
+            if (ivTrainLutemonImage != null) {
+                ivTrainLutemonImage.setVisibility(View.GONE);
+            }
+
         } // AI HELP
     }
 

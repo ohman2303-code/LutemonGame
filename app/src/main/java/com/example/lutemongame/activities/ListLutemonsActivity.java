@@ -1,5 +1,6 @@
 package com.example.lutemongame.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.lutemongame.BattleField;
 import com.example.lutemongame.Home;
 import com.example.lutemongame.ListAdapter;
+import com.example.lutemongame.LocaleHelper;
 import com.example.lutemongame.abstractclass.Lutemon;
 import com.example.lutemongame.R;
 import com.example.lutemongame.TrainingArea;
@@ -24,6 +26,11 @@ public class ListLutemonsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ListAdapter adapter;
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        String lang = LocaleHelper.getLanguage(newBase);
+        super.attachBaseContext(LocaleHelper.updateResources(newBase, lang));
+    } //AI HELP
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

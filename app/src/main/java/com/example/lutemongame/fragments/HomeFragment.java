@@ -98,17 +98,21 @@ public class HomeFragment extends Fragment {
         });
 
         //Here we heal the chosen Lutemon
-        healLutemonButton.setOnClickListener(View -> {
+        healLutemonButton.setOnClickListener(v -> {
             int selectedLutemonId = rgHomeLutemons.getCheckedRadioButtonId();
             if (selectedLutemonId != -1) {
                 Lutemon chosenLutemonForHeal = home.getLutemon(selectedLutemonId);
-                home.healLutemon(chosenLutemonForHeal);
-                Toast.makeText(getContext(), getString(R.string.lutemon_healed, chosenLutemonForHeal.getName()), Toast.LENGTH_SHORT).show();
-            }
-            else {
+                if (chosenLutemonForHeal.getHealth() < chosenLutemonForHeal.getMaxHealth()) {
+
+                    home.healLutemon(chosenLutemonForHeal);
+                    Toast.makeText(getContext(), getString(R.string.lutemon_healed, chosenLutemonForHeal.getName()), Toast.LENGTH_SHORT).show();
+                    makeRadioButtons(getView());
+                } else {
+                    Toast.makeText(getContext(), getString(R.string.maximum_hp,chosenLutemonForHeal.getName()), Toast.LENGTH_SHORT).show();
+                }
+            } else {
                 Toast.makeText(getContext(), getString(R.string.select_lutemon_for_healing), Toast.LENGTH_SHORT).show();
             }
-            makeRadioButtons(view);
         });
 
 
@@ -117,28 +121,38 @@ public class HomeFragment extends Fragment {
         moveLutemonsButton.setOnClickListener(view1 -> {
             int selectedLutemonId = rgHomeLutemons.getCheckedRadioButtonId();
             int rgId = rgChooseLutemonsFromHome.getCheckedRadioButtonId();
-            
-            if (selectedLutemonId != -1){
-                if (rgId == -1) {
-                    Toast.makeText(getContext(), getString(R.string.select_target), Toast.LENGTH_SHORT).show();
-                    return;
-                }
+            if (selectedLutemonId == -1 && rgId == -1) {
+                Toast.makeText(getContext(), getString(R.string.select_lutemon_and_target), Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                Lutemon chosenLutemon = home.getLutemon(selectedLutemonId);
+            if (selectedLutemonId == -1) {
+                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                if (rgId == R.id.rbTrainingAreaFromHome){
+            if (rgId == -1) {
+                Toast.makeText(getContext(), getString(R.string.select_target), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Lutemon chosenLutemon = home.getLutemon(selectedLutemonId);
+            if (chosenLutemon == null) {
+                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String lutemonName = chosenLutemon.getName();
+            if (rgId == R.id.rbTrainingAreaFromHome){
                     //Here we move lutemons to trainingarea
                     home.moveLutemon(chosenLutemon, TrainingArea.getInstance());
-                } else if (rgId == R.id.rbBattleFieldFromHome){
+            } else if (rgId == R.id.rbBattleFieldFromHome){
                     //Here we move lutemons to battleField
                     home.moveLutemon(chosenLutemon, BattleField.getInstance());
-                }
-
-                makeRadioButtons(view);
-                ivHomeLutemonImage.setVisibility(View.INVISIBLE);
-            } else {
-                Toast.makeText(getContext(), getString(R.string.select_moving_lutemon), Toast.LENGTH_SHORT).show();
             }
+
+                makeRadioButtons(getView());
+                ivHomeLutemonImage.setVisibility(View.INVISIBLE);
+                Toast.makeText(getContext(), getString(R.string.lutemon_moved, lutemonName), Toast.LENGTH_SHORT).show();
 
         });
         return view;

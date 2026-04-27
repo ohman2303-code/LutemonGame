@@ -1,5 +1,6 @@
 package com.example.lutemongame.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.lutemongame.LocaleHelper;
 import com.example.lutemongame.R;
 import com.example.lutemongame.TabAdapter;
 import com.example.lutemongame.fragments.BattleFieldFragment;
@@ -23,6 +25,11 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MoveLutemonsActivity extends AppCompatActivity {
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        String lang = LocaleHelper.getLanguage(newBase);
+        super.attachBaseContext(LocaleHelper.updateResources(newBase, lang));
+    } //AI HELP
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
